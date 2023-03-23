@@ -1,0 +1,30 @@
+
+ <!-- <portal-menu-sidenav></portal-menu-sidenav> -->
+ <form [formGroup]="registerorderForm" style="padding: 50px;">
+  <h1 style="text-align: center;">Add Service</h1>
+  <div fxLayout="row" fxLayout.sm="column">
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>ServiceName</mat-label>
+      <input matInput formControlName="serviceName" placeholder="Enter ServiceName">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>laundryId</mat-label>
+      <input matInput formControlName="laundryId" placeholder="Enter laundryId">
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayout.sm="column">
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>Quantity</mat-label>
+      <input matInput formControlName="quantity" type="text" placeholder="Enter quantity">
+    </mat-form-field>
+    <mat-form-field appearance="outline" >
+      <mat-label>ServiceDescription</mat-label>
+      <input matInput formControlName="serviceDescription" type="text" placeholder="Enter ServiceDescription">
+    </mat-form-field>
+    </div>
+  <mat-dialog-actions style="display: block">
+    <div style="display: center">
+      <button mat-raised-button (click)="submit()">Submit</button>
+    </div>
+  </mat-dialog-actions>
+</form>

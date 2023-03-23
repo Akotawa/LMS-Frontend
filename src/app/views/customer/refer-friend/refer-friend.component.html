@@ -1,0 +1,27 @@
+<div class="portal-accent-bg portal-forgot-password-container" >
+  <mat-card class="portal-forgot-card mat-elevation-z portal-text-align-center"
+    fxLayout="column">
+    <mat-card-title class="portal-primary-bg" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <img src="assets/images/laundry-logo.png" class="portal-forgot-card__logo">
+      <h1 i18n>Refer Laundry Management</h1>
+      <p i18n>Please enter username or email address. User will receive a Refer link for the laundry system via email.</p>
+    </mat-card-title>
+    <mat-card-content
+      fxFlex="auto"
+      fxLayout="column"
+      fxLayoutAlign="space-between none">
+      <form [formGroup]="ReferForm" (ngSubmit)="goToLogin()" class="portal-forgot-card__item">
+        <mat-form-field>
+          <input matInput formControlName="email" placeholder="Email Address" (keyup.enter)="goToLogin()">
+        </mat-form-field>
+      </form>
+      <button mat-raised-button i18n class="portal-forgot-card__item"
+        type="submit"
+        color="primary"
+        [disabled]="!ReferForm.valid"
+        (click)="goToLogin()">
+        Send Refer Link
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>

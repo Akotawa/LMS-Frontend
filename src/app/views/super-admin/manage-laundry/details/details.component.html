@@ -1,0 +1,73 @@
+<mat-toolbar
+  matDialogTitle
+  class="mat-accent m-0"
+  style="background: #000; color: white"
+>
+  <mat-toolbar-row>
+    <h2 class="title">Laundry Details</h2>
+    <span class="fill-remaining-space"></span>
+    <button
+      mat-icon-button
+      (click)="matDialogRef.close()"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content>
+  <mat-card>
+    <table style="display: flex">
+      <div
+        class="details"
+        style="display: flex; align-items: center; margin-left: 5px"
+      >
+        <tr>
+          <td class="heading-class">Laundry Name</td>
+          <td>
+            <span>One Laundry</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="heading-class">Admin Name</td>
+          <td>
+            <span>Admin 1</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="heading-class">Laundry Mail</td>
+          <td>
+            <span>laundry@gmail.com</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="heading-class">MobileNumber</td>
+          <td>
+            <span>9638527417</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="heading-class">CreatedAt</td>
+          <td>
+            <span>23.02.2023</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="heading-class">Laundry Id</td>
+          <td>
+            <span>asa55as51a</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="heading-class">Rating</td>
+          <td>
+            <span>4.5</span>
+          </td>
+        </tr>
+        <br />
+      </div>
+    </table>
+  </mat-card> 
+  <br />
+  
+</mat-dialog-content>

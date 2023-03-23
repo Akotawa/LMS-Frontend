@@ -1,0 +1,67 @@
+<mat-toolbar
+  matDialogTitle
+  class="mat-accent m-0"
+  style="background: #000; color: white"
+>
+  <mat-toolbar-row>
+    <h2 class="title">Employee Details</h2>
+    <span class="fill-remaining-space"></span>
+    <button
+      mat-icon-button
+      (click)="matDialogRef.close()"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content>
+  <mat-card>
+    <table style="display: flex">
+      <div
+        class="details"
+        style="display: flex; align-items: center; margin-left: 5px"
+      >
+        <tr>
+          <td class="heading-class">Employee Name</td>
+          <td>
+            <span>One Laundry</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="heading-class">Role Name</td>
+          <td>
+            <span>Store staff</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="heading-class">Mail</td>
+          <td>
+            <span>employee1@gmail.com</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="heading-class">MobileNumber</td>
+          <td>
+            <span>9638527417</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="heading-class">CreatedAt</td>
+          <td>
+            <span>23.02.2023</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="heading-class">Employee Id</td>
+          <td>
+            <span>asa55as51a</span>
+          </td>
+        </tr>
+        <br />
+      </div>
+    </table>
+  </mat-card> 
+  <br />
+  
+</mat-dialog-content>

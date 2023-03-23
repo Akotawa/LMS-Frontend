@@ -1,0 +1,37 @@
+<div class="portal-accent-bg portal-forgot-password-container" >
+  <mat-card class="portal-forgot-card mat-elevation-z portal-text-align-center"
+    fxLayout="column">
+    <mat-card-title class="portal-primary-bg" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <img src="assets/images/laundry-logo.png" class="portal-forgot-card__logo">
+      <h1 i18n>Contct Us/ Report a Issue</h1>
+      <p i18n>We're here to help and answer any question you might
+        have. We look forward to hearing from you</p>
+    </mat-card-title>
+    <mat-card-content
+      fxFlex="auto"
+      fxLayout="column"
+      fxLayoutAlign="space-between none">
+      <form [formGroup]="contactForm" (ngSubmit)="goToLogin()" class="portal-forgot-card__item">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Email Address">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Subject</mat-label>
+          <input matInput formControlName="subject" placeholder="Subject">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Message</mat-label>
+          <textarea matInput formControlName="message" placeholder="Message"></textarea>
+        </mat-form-field>
+      </form>
+      <button mat-raised-button i18n class="portal-forgot-card__item"
+        type="submit"
+        color="primary"
+        [disabled]="!contactForm.valid"
+        (click)="goToLogin()">
+        Submit
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>
