@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from "@angular/material";
 import { UtilityService } from "../../../../shared/services/utility.service";
 import { CouponsService } from "../coupons.service";
 
@@ -16,7 +16,9 @@ export class AddCouponComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private _data: any,
     public matDialogRef: MatDialogRef<AddCouponComponent>,
     public _couponService: CouponsService,
-    public _utilityService : UtilityService
+    public _utilityService : UtilityService,
+    public dialog: MatDialog,
+
   ) {}
 
   ngOnInit() {
@@ -25,18 +27,27 @@ export class AddCouponComponent implements OnInit {
 
   sumit() {
     const data = this.CouponData.getRawValue();
-    this._couponService.addCouponCode(data).then((response: any) => {
-      console.log("uhsuhus",response);
-  
-      // use the response data here, for example:
-      if (response.status === 'success') {
-        alert('Coupon code added successfully!');
-      } else {
-        alert('Failed to add coupon code.');
+    this._couponService.addCouponCode(data)
+      .then((response: any) => {
+        if (response && response.status == "OK") {
+          this._utilityService.openMatSnackBar(
+            response.message,
+            response.status
+          );
+      
+        } else {
+          this._utilityService.openMatSnackBar(
+            response.message,
+            response.status
+          );
+        }
+      },
+      (error) => {
+        this._utilityService.openMatSnackBar("Internal Server error", "ERROR");
       }
-    }).catch((error: any) => {
-      console.error(error); 
-    });
+    );
+    this.matDialogRef.close(); // close the dialog
+    location.reload(); // refresh the page
   }
 
 }

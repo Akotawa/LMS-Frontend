@@ -9,13 +9,16 @@ import { laundryDetailsComponent } from '../../../super-admin/manage-laundry/det
   styleUrls: ['./view-details.component.scss']
 })
 export class ViewDetailsComponent implements OnInit {
-
+  dataInfo: any;
   constructor(
     @Inject(MAT_DIALOG_DATA) private _data: any,
     public matDialogRef: MatDialogRef<laundryDetailsComponent>,
     public _utilityService: UtilityService,
     private dialog: MatDialog,
-  ) { }
+  ) { 
+    this.dataInfo = _data;
+
+  }
 
   ngOnInit() {
     

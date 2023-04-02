@@ -23,27 +23,11 @@ const routes: Routes =
       },
       component: LayoutClassicComponent,
       // canActivate: [AuthGuardService],
-      children: [
-        // {
-        //   path: 'user',
-        //   loadChildren: './views/users/users.module#UsersModule'
-        // },   
+      children: [  
         {
           path: 'dashboard',
           loadChildren: './views/dashboard/dashboard.module#DashboardModule'
         }, 
-        {
-          path: 'cabs',
-          loadChildren: './views/cabs/cabs.module#CabsModule'
-        },
-        {
-          path: 'driver',
-          loadChildren: './views/driver/driver.module#DriverModule'
-        },
-        {
-          path: 'user',
-          loadChildren: './views/user/user.module#UserModule'
-        },
         {
           path: 'super-admin',
           loadChildren: './views/super-admin/super-admin.module#SuperAdminModule'
@@ -60,6 +44,7 @@ const routes: Routes =
           path: 'customer',
           loadChildren: './views/customer/customer.module#CustomerModule'
         },
+
 
         // {
         //   path: 'pages',

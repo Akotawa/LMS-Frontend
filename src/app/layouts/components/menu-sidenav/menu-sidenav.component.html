@@ -20,13 +20,7 @@
         <mat-icon matListIcon>dashboard</mat-icon>
         <h3 matLine>Dashboard </h3>
       </a>
-      <a mat-list-item routerLink="/driver" routerLinkActive="portal-menu--active">
-        <mat-icon matListIcon>person</mat-icon>
-        <h3 matLine>Driver</h3>
-      </a>
-      <a mat-list-item routerLink="/cabs" routerLinkActive="portal-menu--active">
-        <mat-icon matListIcon>local_car_wash</mat-icon>
-        <h3 matLine>Cabs</h3>
+
       </a>
       <a mat-list-item routerLink="/user" routerLinkActive="portal-menu--active">
         <mat-icon matListIcon>person</mat-icon>
@@ -140,10 +134,91 @@
     " matLine>Dashboard</h3>
         </ng-container>
       </a>
+      <!-- <a mat-list-item routerLink="/dashboard" routerLinkActive="portal-menu--active">
+        <ng-container>
+          <mat-icon>dashboard</mat-icon>
+          <h3 style="
+        padding-top: 16px;
+        padding-left: 17px;
+    " matLine>Laundry</h3>
+        </ng-container>
+      </a>
+      <a mat-list-item routerLink="/super-admin/coupons" routerLinkActive="portal-menu--active">
+        <ng-container>
+          <mat-icon>dashboard</mat-icon>
+          <h3 style="
+        padding-top: 16px;
+        padding-left: 17px;
+    " matLine>Coupons</h3>
+        </ng-container>
+      </a>
+      <a mat-list-item routerLink="/admin/register-employee" routerLinkActive="portal-menu--active">
+        <ng-container>
+          <mat-icon>dashboard</mat-icon>
+          <h3 style="
+        padding-top: 16px;
+        padding-left: 17px;
+    " matLine>Employee</h3>
+        </ng-container>
+      </a>
+      <a mat-list-item routerLink="/admin/service-catalogue" routerLinkActive="portal-menu--active">
+        <ng-container>
+          <mat-icon>dashboard</mat-icon>
+          <h3 style="
+        padding-top: 16px;
+        padding-left: 17px;
+    " matLine>Service Catalog</h3>
+        </ng-container>
+      </a>
+      <a mat-list-item routerLink="/employee/inventory" routerLinkActive="portal-menu--active">
+        <ng-container>
+          <mat-icon>dashboard</mat-icon>
+          <h3 style="
+        padding-top: 16px;
+        padding-left: 17px;
+    " matLine>Inventory</h3>
+        </ng-container>
+      </a>
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="portal-menu--active">
+        <ng-container>
+          <mat-icon>dashboard</mat-icon>
+          <h3 style="
+        padding-top: 16px;
+        padding-left: 17px;
+    " matLine>Prices</h3>
+        </ng-container>
+      </a>
+      <a mat-list-item routerLink="/employee/manage-order" routerLinkActive="portal-menu--active">
+        <ng-container>
+          <mat-icon>dashboard</mat-icon>
+          <h3 style="
+        padding-top: 16px;
+        padding-left: 17px;
+    " matLine>Orders</h3>
+        </ng-container>
+      </a>
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="portal-menu--active">
+        <ng-container>
+          <mat-icon>dashboard</mat-icon>
+          <h3 style="
+        padding-top: 16px;
+        padding-left: 17px;
+    " matLine>Contacts Us / Report a problem</h3>
+        </ng-container>
+      </a>
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="portal-menu--active">
+        <ng-container>
+          <mat-icon>dashboard</mat-icon>
+          <h3 style="
+        padding-top: 16px;
+        padding-left: 17px;
+    " matLine>Refer a friend</h3>
+        </ng-container>
+      </a> -->
     </mat-nav-list>
 
     <!-- <h3 class="portal-sidnav-menu__subheader">Pages</h3> -->
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngIf="user.role === 0">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>perm_identity</mat-icon>
@@ -157,9 +232,9 @@
         <a mat-list-item routerLink="/super-admin/register-laundry" routerLinkActive="portal-menu--active">
           <h3 matLine>Register Laundry</h3>
         </a>
-        <a mat-list-item routerLink="/super-admin/change-password-admin" routerLinkActive="portal-menu--active">
+        <!-- <a mat-list-item routerLink="/super-admin/change-password-admin" routerLinkActive="portal-menu--active">
           <h3 matLine>Change Password</h3>
-        </a>
+        </a> -->
         <a mat-list-item routerLink="/super-admin/manage-laundry" routerLinkActive="portal-menu--active">
           <h3 matLine>Manage Laundry(Status)</h3>
         </a>
@@ -171,7 +246,7 @@
         </a> -->
       </mat-nav-list>
     </mat-expansion-panel>
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngIf="user.role === 1">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>perm_identity</mat-icon>
@@ -200,7 +275,7 @@
       </mat-nav-list>
     </mat-expansion-panel>
 
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngIf="user.role === 2 || user.role ===1">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>perm_identity</mat-icon>
@@ -220,12 +295,15 @@
         <a mat-list-item routerLink="/employee/inventory" routerLinkActive="portal-menu--active">
           <h3 matLine>Inventory management</h3>
         </a>
+        <a mat-list-item routerLink="/employee/Inventory-Add" routerLinkActive="portal-menu--active">
+          <h3 matLine>Inventory Add</h3>
+        </a>
         <!-- <a mat-list-item routerLink="/pages/profile" routerLinkActive="portal-menu--active">
           <h3 matLine>Machine management</h3>
         </a> -->
-        <a mat-list-item routerLink="/employee/order-transit" routerLinkActive="portal-menu--active">
+        <!-- <a mat-list-item routerLink="/employee/order-transit" routerLinkActive="portal-menu--active">
           <h3 matLine>Pickup and Drop</h3>
-        </a>
+        </a> -->
         <!-- <a mat-list-item routerLink="/external/lock" routerLinkActive="portal-menu--active">
     <h3 matLine>Lock Page</h3>
   </a> -->
@@ -233,7 +311,7 @@
     </mat-expansion-panel>
 
 
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngIf="user.role === 3">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>perm_identity</mat-icon>
@@ -253,12 +331,15 @@
         <a mat-list-item routerLink="/customer/track-order" routerLinkActive="portal-menu--active">
           <h3 matLine>Track Order</h3>
         </a>
+        <!-- <a mat-list-item routerLink="/customer/customer-add" routerLinkActive="portal-menu--active">
+          <h3 matLine>Customer Add </h3>
+        </a> -->
         <a mat-list-item routerLink="/customer/refer" routerLinkActive="portal-menu--active">
           <h3 matLine>Refer a friend</h3>
         </a>
-        <a mat-list-item routerLink="/customer/change-pass" routerLinkActive="portal-menu--active">
+        <!-- <a mat-list-item routerLink="/customer/change-pass" routerLinkActive="portal-menu--active">
           <h3 matLine>Change Password</h3>
-        </a>
+        </a> -->
         <a mat-list-item routerLink="/customer/contact" routerLinkActive="portal-menu--active">
           <h3 matLine>Contact us/ Report a problem</h3>
         </a>

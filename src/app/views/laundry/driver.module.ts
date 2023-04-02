@@ -11,13 +11,16 @@ import {
   MatNativeDateModule,
 } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { CabsComponent } from "./cabs.component";
+import { DriverComponent } from "./driver.component";
 import { DetailsComponent } from "./details/details.component";
 import { MatDialogModule } from "@angular/material/dialog";
-import { MatPaginatorModule } from "@angular/material/paginator";
+import { LaundryDetailsComponent } from "./laundry-details/laundry-details.component";
+import { BookingDetailsComponent } from "./booking-details/booking-details.component";
+import { FeedbackComponent } from "./feedback/feedback.component";
+import { TipHistoryComponent } from "./tip-history/tip-history.component";
 
 const routes: Routes = [
-  { path: "", component: CabsComponent, data: { title: "Cabs" } },
+  // { path: "", component: DriverComponent, data: { title: "Driver" } },
 ];
 
 @NgModule({
@@ -25,7 +28,6 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedMaterialModule,
-    MatPaginatorModule,
     FlexLayoutModule,
     SharedComponentsModule,
     MatDatepickerModule,
@@ -36,7 +38,20 @@ const routes: Routes = [
     MatFormFieldModule,
     MatDialogModule,
   ],
-  declarations: [CabsComponent, DetailsComponent],
-  entryComponents: [DetailsComponent],
+  declarations: [
+    DriverComponent,
+    DetailsComponent,
+    LaundryDetailsComponent,
+    BookingDetailsComponent,
+    FeedbackComponent,
+    TipHistoryComponent,
+  ],
+  entryComponents: [
+    DetailsComponent,
+    LaundryDetailsComponent,
+    BookingDetailsComponent,
+    TipHistoryComponent,
+    FeedbackComponent,
+  ],
 })
-export class CabsModule {}
+export class DriverModule {}

@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       if (response && response.status === 'OK') {
         localStorage.setItem('userToken', response.data.token);
         const user = {
-          // id: response.data.user_details.id,
+          id: response.data.user_details.id,
           createdAt:response.data.user_details.createdAt,
           fullName: response.data.user_details.fullName,
           password:response.data.user_details.password,
@@ -45,13 +45,15 @@ export class LoginComponent implements OnInit {
           email:response.data.user_details.email,
           // appId:response.data.user_details.appId,
           // profileImage: response.data.user_details.profilePhoto,
-          role: response.data.user_details.role
+          role: response.data.user_details.role,
+          laundryid:response.data.user_details.laundryid,
+          referid:response.data.user_details.referid
         };
 
         this._loginService.setSessionUser(user);
         localStorage.setItem('user', JSON.stringify(user));
         this._loginService.isLoginSubject.next(true);
-        this.router.navigate(['/user']);
+        this.router.navigate(['/dashboard']);
       } else {
         this._utilityService.openMatSnackBar(response.message, response.status);
       }

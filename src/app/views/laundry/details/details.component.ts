@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { DashboardService } from "../../../shared/services/dashboard.service";
 import { UtilityService } from "../../../shared/services/utility.service";
-import { CabDetailsComponent } from "../cab-details/cab-details.component";
+import { LaundryDetailsComponent } from "../laundry-details/laundry-details.component";
 import { DriverService } from "../driver.service";
 
 @Component({
@@ -44,7 +44,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {}
 
   viewDetails(element): void {
-    const dialogRef = this.dialog.open(CabDetailsComponent, {
+    const dialogRef = this.dialog.open(LaundryDetailsComponent, {
       width: "900px",
       height: "530px",
       data: element,

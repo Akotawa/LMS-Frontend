@@ -17,6 +17,7 @@ export class EmployeeManagementComponent implements OnInit {
   pageNumber: any = 1;
   filterInput: string = null;
   displayedColumns: string[] = [];
+  isLoading=false;
   
   constructor(
     private dialog: MatDialog,
@@ -36,37 +37,71 @@ export class EmployeeManagementComponent implements OnInit {
   getNextPageData(page: any) {
     this.pagination.currentPage = page.pageIndex + 1;
     this.pagination.perPage = page.pageSize;
-    // this.getDataList();
+    this.getDataList();
   }
   view(id: any): void {
-    let driverData = {};
-    // this._driverService.driverRating(id).then((response1: any) => {
-    //   driverData["driverRating"] = response1.data;
-    //   this._driverService.getUserDetail(id).then((response: any) => {
-    //     driverData["driverDetail"] = response.data;
-    //     const dialogRef = this.dialog.open(DetailsComponent, {
-    //       width: "900px",
-    //       height: "530px",
-    //       data: driverData,
-    //       disableClose: true,
-    //     });
-    //   });
-    // });
+    this.isLoading=true;
+    this._adminService.getEmployeDetails(id).then((Response: any) => {
+      this.isLoading=false;
+      const dialogRef = this.dialog.open(ViewDetailsComponent, {
+        width: "650px",
+        data: Response.data,
+        disableClose: true,
 
-    const dialogRef = this.dialog.open(ViewDetailsComponent, {
-      width: "900px",
-      height: "530px",
-      // data: driverData,
-      disableClose: true,
+      });
     });
   }
 
   getDataList() {
+    this.isLoading=true;
     this._adminService.getData().then((response: any) => {
       if (response && response.status === "OK") {
         this.dataSource = response.data;
+        this.isLoading=false
       }
     });
   }
+
+  // getStatus(orderStatus) {
+  //   if (orderStatus === 0) {
+  //     return "Pending";
+  //   } else if (orderStatus === 1) {
+  //     return " received";
+  //   } else if (orderStatus === 2) {
+  //     return "completed";
+  //   }
+  //    else if (orderStatus === 3) {
+  //     return "delivered";
+  //   }
+  //    else if (orderStatus === 4) {
+  //     return "cancel";
+  //   }
+  // }
+
+
+  // changeStatus(id: any, status: string, data: any) {
+  //   this.isLoading = true;
+  //   this._adminService.getOrderPicupDrop(id, status, data).then(
+  //     (response: any) => {
+  //       if (response && response.status) {
+  //         this._utilityService.openMatSnackBar(
+  //           "Status has been successfully updated",
+  //           "OK"
+  //         );
+  //         this.isLoading = false;
+  //         this.getDataList();
+  //       } else {
+  //         this._utilityService.openMatSnackBar(
+  //           response.message,
+  //           response.status
+  //         );
+  //         this.isLoading = false;
+  //       }
+  //     },
+  //     (error) => {
+  //       this.isLoading = false;
+  //     }
+  //   );
+  // }
 
 }

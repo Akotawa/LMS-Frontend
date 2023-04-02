@@ -17,6 +17,7 @@ export class CouponsComponent implements OnInit {
   filter: any;
   pageNumber: any = 1;
   filterInput: string = null;
+  isLoading=false;
 
   constructor(
     public dialog: MatDialog,
@@ -26,26 +27,34 @@ export class CouponsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getDataList();
     this.pagination = this._utilityService.pagination;
     this.displayedColumns = this._couponsService.displayedColumns;
-    this.getDataList();
   }
   getNextPageData(page: any) {
     this.pagination.currentPage = page.pageIndex + 1;
     this.pagination.perPage = page.pageSize;
-    // this.getDataList();
+    this.getDataList();
   }
+
   addCoupon() {
     const dialogRef = this.dialog.open(AddCouponComponent, {
       width: "40%",
     });
     dialogRef.afterClosed().subscribe((response) => {
-      if (!response) {
-        return;
+      if (response && response.status == 'OK') {
+        this.getDataList(); // refresh the coupon list
+        dialogRef.close(); // close the dialog
       }
-      // this.getDataList();
     });
   }
+  
+  
+  
+  
+  
+  
+  
   setStatus(id, event) {
     this._couponsService.setstatus(id, event.checked).then((response: any) => {
       this._utilityService.openMatSnackBar(response.message, response.status);
@@ -63,26 +72,35 @@ export class CouponsComponent implements OnInit {
   //   })
   //   ;
   // }
-  // deleteById(id: any){
-  //   if (confirm("Are you sure you want to delete this Cab?")) {
-  //     this._couponsService.deleteById(id)
-  //         .subscribe((response: any) => {
-  //             if (response && response.status == 'OK') {
-  //                 this.ngOnInit();
-  //                 this._utilityService.openMatSnackBar(response.message, response.status);
-  //             } else {
-  //                 this._utilityService.openMatSnackBar(response.message, response.status);
-  //             }
-  //         }, error => {
-  //             this._utilityService.openMatSnackBar("Internal Server error", 'ERROR');
-  //         });
-  // }
-  // }
+
+
+  deleteById(id: any){
+    this.isLoading=true;
+    if (confirm("Are you sure you want to delete this coupon?")) {
+      this._couponsService.deleteById(id)
+          .subscribe((response: any) => {
+              if (response && response.status == 'OK') {
+                  this.isLoading=false;
+                  this.ngOnInit();
+                  this._utilityService.openMatSnackBar(response.message, response.status);
+              } else {
+                  this._utilityService.openMatSnackBar(response.message, response.status);
+              }
+          }, error => {
+              this._utilityService.openMatSnackBar("Internal Server error", 'ERROR');
+          });
+    }
+  }
+  
+
+
+
   getDataList() {
+    this.isLoading=true;
     this._couponsService.getData().then((response: any) => {
       if (response && response.status === "OK") {
         this.dataSource = response.data;
-        console.log(">>>>>>>", this.dataSource);
+        this.isLoading=false;
       }
     });
   }

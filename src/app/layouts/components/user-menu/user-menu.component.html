@@ -1,1 +1,11 @@
-df
+
+
+<button mat-button [matMenuTriggerFor]="menu" mat-raised-button color="primary">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="changePassword()">
+    <mat-icon matListIcon>lock_open</mat-icon>
+    Change Password</button>
+  <button mat-menu-item  (click)="_loginService.logout()">
+    <mat-icon matListIcon>exit_to_app</mat-icon>
+    Sign Out</button>
+</mat-menu>

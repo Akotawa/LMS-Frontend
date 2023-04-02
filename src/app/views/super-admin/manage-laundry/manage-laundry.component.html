@@ -1,3 +1,8 @@
+<div *ngIf="isLoading">
+  <mat-progress-spinner [mode]="'indeterminate'" [diameter]="50" [strokeWidth]="5" [color]="'primary'"
+    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+  </mat-progress-spinner>
+</div>
 <div
   class="flex flex-col flex-auto sm:mb-18 overflow-hidden sm:overflow-y-auto page-layout carded fullwidth inner-scroll body"
 >
@@ -15,13 +20,13 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- App Id Column -->
       <ng-container matColumnDef="appId">
-        <th mat-header-cell *matHeaderCellDef>firstName</th>
+        <th mat-header-cell *matHeaderCellDef>First Name</th>
         <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
       </ng-container>
       <!-- Full name Column -->
-      <ng-container matColumnDef="fullName">
-        <th mat-header-cell *matHeaderCellDef>Laundry Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
+      <ng-container matColumnDef="companyName">
+        <th mat-header-cell *matHeaderCellDef> Company Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.companyName }}</td>
       </ng-container>
       <!-- Mobile number Column -->
       <ng-container matColumnDef="mobileNumber">
@@ -33,7 +38,7 @@
         <th mat-header-cell *matHeaderCellDef>Status</th>
         <td mat-cell *matCellDef="let element">
           <mat-slide-toggle
-            [checked]="element.active"
+            [checked]="true"  
             [color]="'primary'"
             (change)="setStatus(element.id, $event)"
           >
@@ -62,14 +67,19 @@
               </mat-icon>
               View
             </button>
-            <button mat-menu-item (click)="orderDetails(element.id)">
+             <!-- <button mat-menu-item (click)="deleteById(element.id)">
+            <mat-icon style="cursor: pointer; color: #000">delete
+            </mat-icon>
+            Delete
+          </button> -->
+            <!-- <button mat-menu-item (click)="orderDetails(element.id)">
               <mat-icon style="cursor: pointer; color: #000">list </mat-icon>
               Order History
             </button>
             <button mat-menu-item (click)="feedbackDetails(element.id)">
               <mat-icon style="cursor: pointer; color: #000">list </mat-icon>
               Feedback
-            </button>
+            </button> -->
             <mat-divider></mat-divider>
           </mat-menu>
         </td>

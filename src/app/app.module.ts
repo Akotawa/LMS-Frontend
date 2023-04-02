@@ -5,6 +5,7 @@ import { MatIconRegistry } from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutsModule } from './layouts/layouts.module';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { AppComponent } from './app.component';
 
@@ -29,6 +30,8 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     LayoutsModule,
     ChartsModule,
+    MatMenuModule,
+    
     AppRoutingModule,
     JwtModule.forRoot({
       config: {

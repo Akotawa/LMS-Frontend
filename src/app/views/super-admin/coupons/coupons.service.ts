@@ -13,6 +13,7 @@ export class CouponsService {
     "description",
     "discount",
     "createdAt",
+    "action"
   ];
   formGroup: FormGroup;
   constructor(public _apiService: ApiService, public formBuilder: FormBuilder) {
@@ -25,9 +26,9 @@ export class CouponsService {
     });
   }
 
-  // deleteById(id): any {
-  //   return this._apiService.delete(`cab/deleteUserById/${id}`);
-  // }
+  deleteById(id): any {
+    return this._apiService.delete(`promoCode/${id}/delete`);
+  }
 
   // getData(data): Promise<any> {
   //   return this._apiService.post(
@@ -36,7 +37,7 @@ export class CouponsService {
   //   );
   // }
   getCouponDetails(id): Promise<any> {
-    return this._apiService.get(`cab/getCouponDetailsById?id=${id}`);
+    return this._apiService.get(`laundry/getCouponDetailsById?id=${id}`);
   }
   getData(): Promise<any> {
     return this._apiService.get(`promoCodes`);

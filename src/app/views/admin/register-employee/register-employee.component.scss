@@ -25,11 +25,9 @@
     width: 100%;
   }
   
-  .portal-first-name {
-    margin-right: 16px;
+  .mat-form-field[_ngcontent-c24]{
+    margin: 10px !important;
   }
-  
-  
   // IE 11 fixes
   @media all and (-ms-high-contrast:none) {
     .portal-register-container {

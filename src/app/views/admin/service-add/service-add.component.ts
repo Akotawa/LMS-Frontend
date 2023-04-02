@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UtilityService } from '../../../shared/services/utility.service';
 import { AdminService } from '../admin.service';
 
 @Component({
@@ -11,21 +12,26 @@ import { AdminService } from '../admin.service';
 export class ServiceAddComponent implements OnInit {
 
   registerorderForm: FormGroup;
-
+  file: any;
+  isSubmitButtonDisable: any;
+  leagueId: any;
+  sessionUser:any
    
   constructor( private formBuilder: FormBuilder,
     private _adminService: AdminService,
+    private _utilityService:UtilityService,
 
 
     private router: Router) { 
       const emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
       const formOptions = {
+
         'laundryId': ['', Validators.required],
+        'price': ['', Validators.required],
         'quantity': ['', Validators.required],
         'serviceDescription': ['', [Validators.required, Validators.pattern(emailRegex)]],
         'serviceName': ['', Validators.required],
-   
-
+        // 'profilePhoto': ['', Validators],
       };
       
       this.registerorderForm = this.formBuilder.group(formOptions, {
@@ -34,6 +40,7 @@ export class ServiceAddComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.sessionUser = JSON.parse(localStorage.getItem("user"));
   }
 //   matchingPasswordsValidator(passwordKey: string, confirmPasswordKey: string): any {
 //     return (group: FormGroup) => {
@@ -52,11 +59,40 @@ export class ServiceAddComponent implements OnInit {
 //     };
 
 // }
+
+getFile(event: any) {
+  this.file = event.file;
+  this.isSubmitButtonDisable = event.isSubmitButtonDisable;
+}
+
 submit(){
   const data = this.registerorderForm.getRawValue();
+  const laundryId = this.registerorderForm.get('laundryId').value; // get the laundryId value
+  data.laundryId = this.sessionUser.laundryid;
+  console.log('laundryid value',laundryId);
+
+  // data.profilePhoto=this.file;
+
   this._adminService.serviceAdd(data).then((response: any) => {
-    console.log(response);
-  });
+    this.registerorderForm.reset()
+    if (response && response.status == "OK") {
+      this._utilityService.openMatSnackBar(
+        response.message,
+        response.status
+      );
+    } else {
+      this._utilityService.openMatSnackBar(
+        response.message,
+        response.status
+      );
+    }
+  },
+  
+
+  (error) => {
+    this._utilityService.openMatSnackBar("Internal Server error", "ERROR");
+  }
+);
 }
 
 }

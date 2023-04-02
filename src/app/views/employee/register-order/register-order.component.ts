@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UtilityService } from '../../../shared/services/utility.service';
 import { AdminService } from '../../admin/admin.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class RegisterOrderComponent implements OnInit {
    
   constructor( private formBuilder: FormBuilder,
     private _adminService: AdminService,
+    private _utilityService:UtilityService,
 
 
     private router: Router) { 
@@ -22,7 +24,7 @@ export class RegisterOrderComponent implements OnInit {
         'contactNumber': ['', Validators.required],
         'customerName': ['', Validators.required],
         'email': ['', [Validators.required, Validators.pattern(emailRegex)]],
-        'orderStatus': ['', Validators.required],
+        // 'orderStatus': ['', Validators.required],
         'payment': ['', Validators.required],
         'quantity': ['', Validators.required],
         'serviceType': ['', Validators.required],
@@ -52,14 +54,28 @@ export class RegisterOrderComponent implements OnInit {
 //       }
 //       return null;
 //     };
-
 // }
+
 submit(){
   const data = this.registerorderForm.getRawValue();
   this._adminService.orderAdd(data).then((response: any) => {
-    console.log(response);
-  });
-
+    this.registerorderForm.reset()
+    if (response && response.status == "OK") {
+      this._utilityService.openMatSnackBar(
+        response.message,
+        response.status
+      );
+    } else {
+      this._utilityService.openMatSnackBar(
+        response.message,
+        response.status
+      );
+    }
+  },
+  (error) => {
+    this._utilityService.openMatSnackBar("Internal Server error", "ERROR");
+  }
+);
 }
 
 }

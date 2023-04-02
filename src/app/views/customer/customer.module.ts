@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
 import { PlaceOrderComponent } from './place-order/place-order.component';
 import { TrackOrderComponent } from './track-order/track-order.component';
-import { ReferFriendComponent } from './refer-friend/refer-friend.component';
 import { CustomerPasswordChangeComponent } from './customer-password-change/customer-password-change.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CustomerRouting } from './customer-routing.module';
@@ -16,6 +15,8 @@ import { MatDatepickerModule, MatNativeDateModule, MatInputModule, MatFormFieldM
 import { LayoutsModule } from '../../layouts/layouts.module';
 import { SharedComponentsModule } from '../../shared/shared-components/shared-components.module';
 import { OrderDetailsComponent } from './track-order/order-details/order-details.component';
+import { ReferFriendComponent } from './refer-friend/refer-friend.component';
+import { CustomerAddComponent } from './customer-add/customer-add.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,7 @@ import { OrderDetailsComponent } from './track-order/order-details/order-details
     MatFormFieldModule,
     MatDialogModule,
   ],
-  declarations: [ProfileComponent, PlaceOrderComponent, TrackOrderComponent, ReferFriendComponent, CustomerPasswordChangeComponent, ContactUsComponent, CustomerComponent, OrderDetailsComponent],
+  declarations: [ProfileComponent, PlaceOrderComponent, TrackOrderComponent, ReferFriendComponent, CustomerPasswordChangeComponent, ContactUsComponent, CustomerComponent, OrderDetailsComponent, CustomerAddComponent],
   entryComponents: [ProfileComponent, PlaceOrderComponent, TrackOrderComponent, ReferFriendComponent, CustomerPasswordChangeComponent, ContactUsComponent, OrderDetailsComponent]
 })
 export class CustomerModule { }

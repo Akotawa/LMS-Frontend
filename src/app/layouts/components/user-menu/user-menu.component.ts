@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../../shared/services/login.service';
 import { MatDialog } from '@angular/material';
 import { UtilityService } from '../../../shared/services/utility.service';
+import { CustomerPasswordChangeComponent } from '../../../views/customer/customer-password-change/customer-password-change.component';
 
 @Component({
   selector: 'portal-user-menu',
@@ -20,15 +21,15 @@ export class UserMenuComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("user"));
   }
-  // changePassword(): void {
-  //   this.dialogRef = this._matDialog.open(ChangePasswordComponent, {
-  //     panelClass: 'contact-form-dialig',
-  //     width: '600px'
-  //   });
-  //   this.dialogRef.afterClosed().subscribe((response: any) => {
-  //     if (!response) {
-  //       return;
-  //     }
-  //   });
-  // }
+  
+  changePassword(): void {
+    this.dialogRef = this._matDialog.open(CustomerPasswordChangeComponent, {
+      width: '600px'
+    });
+    this.dialogRef.afterClosed().subscribe((response: any) => {
+      if (!response) {
+        return;
+      }
+    });
+  }
 }

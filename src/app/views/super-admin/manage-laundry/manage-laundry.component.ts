@@ -14,9 +14,11 @@ import { orderDetailsComponent } from './order-details/order-details.component';
 })
 export class ManageLaundryComponent implements OnInit {
   dataSource: any[]=[];
-  pagination: any;
   filter: any;
   pageNumber: any = 1;
+  pagination: any;
+  isLoading = false;
+
   filterInput: string = null;
   displayedColumns: string[] = [];
   
@@ -30,10 +32,9 @@ export class ManageLaundryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
+    this.getDataList();
     this.pagination = this._utilityService.pagination;
     this.displayedColumns = this._sAdminService.displayedColumns;
-    this.getDataList();
 
   }
 
@@ -42,43 +43,40 @@ export class ManageLaundryComponent implements OnInit {
     this.pagination.perPage = page.pageSize;
     this.getDataList();
   }
-  view(id: any): void {
-    let driverData = {};
-    // this._driverService.driverRating(id).then((response1: any) => {
-    //   driverData["driverRating"] = response1.data;
-    //   this._driverService.getUserDetail(id).then((response: any) => {
-    //     driverData["driverDetail"] = response.data;
-    //     const dialogRef = this.dialog.open(DetailsComponent, {
-    //       width: "900px",
-    //       height: "530px",
-    //       data: driverData,
-    //       disableClose: true,
-    //     });
-    //   });
-    // });
 
-    const dialogRef = this.dialog.open(laundryDetailsComponent, {
-      width: "900px",
-      height: "530px",
-      // data: driverData,
-      disableClose: true,
+  view(id: any): void {
+    this.isLoading=true;
+    this._superadminservice.getlaundryDetails(id).then((Response: any) => {
+      const dialogRef = this.dialog.open(laundryDetailsComponent, {
+        width: "650px",
+        data: Response.data,
+        disableClose: true,
+
+      });
+      this.isLoading=false;
+
     });
   }
 
   getDataList() {
+    this.isLoading=true;
     this._superadminservice.getData().then((response: any) => {
       this.dataSource=response.data
+      this.isLoading=false;
+
       })
   }
 
   setStatus(id, event) {
+    this.isLoading=true;
     console.log(">> inside toogle", event);
-
-    // this._driverService.statusUser(id, event.checked).then((response: any) => {
-    //   this._utilityService.openMatSnackBar(response.message, response.status);
-    //   console.log(">>> Response is ", response);
-    // });
+    this._superadminservice.statusUser(id, event.checked).then((response: any) => {
+      this._utilityService.openMatSnackBar(response.message, response.status);
+      console.log(">>> Response is ", response);
+      this.isLoading=false;
+    });
   }
+
   orderDetails(id) {
     // this._driverService.getBookingList(id).then((response: any) => {
     //   const dialogRef = this.dialog.open(BookingDetailsComponent, {
@@ -118,6 +116,22 @@ export class ManageLaundryComponent implements OnInit {
       width: "850 px",
       disableClose: true,
     });
+  }
+
+    deleteById(id: any){
+    if (confirm("Are you sure you want to delete this Laundry?")) {
+      this._superadminservice.deleteById(id)
+          .then((response: any) => {
+              if (response && response.status == 'OK') {
+                  this.ngOnInit();
+                  this._utilityService.openMatSnackBar(response.message, response.status);
+              } else {
+                  this._utilityService.openMatSnackBar(response.message, response.status);
+              }
+          }, error => {
+              this._utilityService.openMatSnackBar("Internal Server error", 'ERROR');
+          });
+  }
   }
 
 }

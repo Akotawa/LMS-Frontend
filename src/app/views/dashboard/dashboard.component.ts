@@ -59,20 +59,11 @@ export class DashboardComponent implements OnInit {
   //   this.pagination.perPage = page.pageSize;
   //   this.getDataList();
   // }
-  // getDataList() {
-  //   let json = {
-  //     pagination: this.pagination,
-  //     filter: {
-  //       driverId: 0,
-  //       userId: 0,
-  //     },
-  //   };
-  //   this._dashboardService.getData(json).then((response: any) => {
-  //     if (response && response.status === "OK") {
-  //       this.pagination = response.data;
-  //       this.dataSource = this.pagination.data;
-  //       console.log(">>>>>>>>", this.dataSource);
-  //     }
-  //   });
-  // }
+  getDataList() {
+    this._dashboardService.getDashboardData().then((response: any) => {
+      if (response && response.status === "OK") {
+        console.log(">>>>>>>>", this.dataSource);
+      }
+    });
+  }
 }

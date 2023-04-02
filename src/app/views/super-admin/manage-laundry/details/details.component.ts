@@ -27,13 +27,8 @@ export class laundryDetailsComponent implements OnInit {
     public _utilityService: UtilityService,
     private dialog: MatDialog,
   ) {
-    // this.dataInfo = _data["driverDetail"];
-    // this.driverRating = _data["driverRating"];
-    // let rating = 0;
-    // for (const iterator of this.driverRating) {
-    //   rating = rating + iterator["rating"];
-    // }
-    // this.average = rating / this.driverRating.length;
+    this.dataInfo = _data;
+
   }
 
   ngOnInit() {}

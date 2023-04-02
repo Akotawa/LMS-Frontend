@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 import { ConstantService } from '../../../shared/services/constants.service';
 import { UtilityService } from '../../../shared/services/utility.service';
 import { CustomerService } from '../../customer.service';
@@ -14,33 +15,41 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
   styleUrls: ['./track-order.component.scss']
 })
 export class TrackOrderComponent implements OnInit {
-  dataSource: any[]=[
-    {orderId: 5512121, orderDate:'20.02.2023', mobileNumber: 963852741, status:'pending', net:250}
-    
-  ];
+  dataSource: any[]=[];
   pagination: any;
   filter: any;
   pageNumber: any = 1;
   filterInput: string = null;
   displayedColumns: string[] = [];
+  sessionUser: any;
+  routeSub: any;
   
   constructor(
     private dialog: MatDialog,
     public _utilityService: UtilityService,
     private _customerService: CustomerService,
-    public _constantService: ConstantService
+    public _constantService: ConstantService,
+    private routes : ActivatedRoute
+
   ) { }
 
   ngOnInit() {
     
     this.pagination = this._utilityService.pagination;
     this.displayedColumns = this._customerService.displayedColumns;
+    this.sessionUser = JSON.parse(localStorage.getItem("user"));
+    this.getAllList('id')
+    this.routeSub = this.routes.params.subscribe(params => {
+      console.log(params) //log the entire params object
+      console.log(params['id']) //log the value of id
+      this.getAllList(params['id']);
+    });
   }
 
   getNextPageData(page: any) {
     this.pagination.currentPage = page.pageIndex + 1;
     this.pagination.perPage = page.pageSize;
-    // this.getDataList();
+    this.getAllList('id');
   }
   view(id: any): void {
     let driverData = {};
@@ -65,6 +74,10 @@ export class TrackOrderComponent implements OnInit {
     });
   }
   
+  getAllList(id: any) {
+    this._customerService.trackOrderList(this.sessionUser.id).then((resData: any) => {
+      this.dataSource = resData.data;
+  })}
 
 }
 

@@ -7,21 +7,20 @@ import { ApiService } from "../../shared/services/api.service";
 export class SuperAdminService {
   displayedColumns: string[] = [
     "appId",
-    "fullName",
+    "companyName",
     "mobileNumber",
-    // "createdAt",
     "status",
     "action",
   ];
   constructor(private _apiService: ApiService) { }
 
   deleteById(id): Promise<any> {
-    return this._apiService.delete(`user/deleteUserById?id=${id}`);
+    return this._apiService.delete(`laundry/deleteUserById?id=${id}`);
   }
 
   acceptOrReject(id, status): any {
     return this._apiService.post(
-      `cab/changeStatus?id=${id}&status=${status}`,
+      `laundry/changeStatus?id=${id}&status=${status}`,
       null
     );
   }
@@ -42,10 +41,11 @@ export class SuperAdminService {
   }
   statusUser(id, active) {
     return this._apiService.post(
-      `user/isActiveUser?id=${id}&active=${active}`,
+      `laundry/${id}/${active}`,
       null
     );
   }
+
   driverRating(id): Promise<any> {
     return this._apiService.get(
       `rating/getRatingListByDriverId?driverId=${id}`
@@ -67,4 +67,9 @@ export class SuperAdminService {
   laundryAdd(data): Promise<any> {
     return this._apiService.post("laundry/add", data);
   }
+
+  getlaundryDetails(id): Promise<any> {
+    return this._apiService.get(`laundry/${id}`);
+  }
+  
 }

@@ -6,19 +6,21 @@ import { ApiService } from "../../shared/services/api.service";
 })
 export class AdminService {
   displayedColumns: string[] = [
-    "employeeId",
-    "fullName",
+    "firstName",
+    "email",
     "mobileNumber",
-    "role",
-    "action",
+    "city",
+    "country",
+    "action"
   ];
-  displayedColumnss: string[] = [
-    "employeeId",
-    "fullName",
-    "mobileNumber",
-    "role",
-    "action",
-  ];
+
+  // displayedColumnss: string[] = [
+  //   "employeeId",
+  //   "fullName",
+  //   "mobileNumber",
+  //   "role",
+  //   "action",
+  // ];
   constructor(private _apiService: ApiService) { }
 
   deleteById(id): Promise<any> {
@@ -27,7 +29,7 @@ export class AdminService {
 
   acceptOrReject(id, status): any {
     return this._apiService.post(
-      `cab/changeStatus?id=${id}&status=${status}`,
+      `laundry/changeStatus?id=${id}&status=${status}`,
       null
     );
   }
@@ -75,12 +77,22 @@ export class AdminService {
   employeAdd(data): Promise<any> {
     return this._apiService.post("employee/add", data);
   }
+  customerAdd(data): Promise<any> {
+    return this._apiService.post("customer/add", data);
+  }
 
   getOrderData(): Promise<any> {
     return this._apiService.get(`orders`);
   }
+
+  getInventryData(): Promise<any> {
+    return this._apiService.get(`Item`);
+  }
   orderAdd(data): Promise<any> {
     return this._apiService.post("order/add", data);
+  }
+  inventoryAdd(data): Promise<any> {
+    return this._apiService.post("Item/add", data);
   }
   serviceAdd(data): Promise<any> {
     return this._apiService.post("Service/add", data);
@@ -91,4 +103,14 @@ export class AdminService {
       `Service/laundryId?laundryId=${id}`
     );
   }
+
+  getOrderPicupDrop(id: number, status: string,data:any): Promise<any> {
+    return this._apiService.post(`order/${id}/${status}/statusUpdate`,data);
+  }
+
+  getEmployeDetails(id): Promise<any> {
+  return this._apiService.get(`employee/get/${id}`);
+  }
+
+
 }

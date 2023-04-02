@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { UtilityService } from "../../../shared/services/utility.service";
-import { CabDetailsComponent } from "../cab-details/cab-details.component";
+import { LaundryDetailsComponent } from "../laundry-details/laundry-details.component";
 
 @Component({
   selector: "app-booking-details",
@@ -20,7 +20,7 @@ export class BookingDetailsComponent implements OnInit {
   ];
   constructor(
     @Inject(MAT_DIALOG_DATA) private _data: any,
-    public matDialogRef: MatDialogRef<CabDetailsComponent>,
+    public matDialogRef: MatDialogRef<LaundryDetailsComponent>,
     public _utilityService: UtilityService
   ) {
     this.dataSource = _data;

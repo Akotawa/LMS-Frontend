@@ -4,7 +4,7 @@
   style="background: #000; color: white"
 >
   <mat-toolbar-row>
-    <h2 class="title">Laundry Details</h2>
+    <h2 class="title">laundry Details</h2>
     <span class="fill-remaining-space"></span>
     <button
       mat-icon-button
@@ -16,58 +16,85 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-dialog-content>
-  <mat-card>
-    <table style="display: flex">
-      <div
-        class="details"
-        style="display: flex; align-items: center; margin-left: 5px"
-      >
+  <ng-container>
+    <mat-card>
+      <table style="display: flex">
+        <!-- <div class="profile">
+          <tr>
+            <td>
+              <img
+                [src]="_utilityService.getImageUrl(dataInfo.carImages, 'laundry')"
+                (error)="_utilityService.onImgError($event)"
+                style="
+                  width: 120px;
+                  height: 120px;
+                  border: 4px solid;
+                  display: flex;
+                "
+              />
+            </td>
+          </tr>
+        </div> -->
+        <div
+          class="details"
+          style="display: flex; align-items: center; margin: left 15px"
+        >
         <tr>
-          <td class="heading-class">Laundry Name</td>
+          <td class="heading-class">First Name</td>
           <td>
-            <span>One Laundry</span>
+            <span>{{ dataInfo.firstName }}</span>
           </td>
         </tr>
         <tr>
-          <td class="heading-class">Admin Name</td>
+          <td class="heading-class">last Name</td>
           <td>
-            <span>Admin 1</span>
+            <span>{{ dataInfo.lastName }}</span>
           </td>
         </tr>
-        <tr>
-          <td class="heading-class">Laundry Mail</td>
-          <td>
-            <span>laundry@gmail.com</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="heading-class">MobileNumber</td>
-          <td>
-            <span>9638527417</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="heading-class">CreatedAt</td>
-          <td>
-            <span>23.02.2023</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="heading-class">Laundry Id</td>
-          <td>
-            <span>asa55as51a</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="heading-class">Rating</td>
-          <td>
-            <span>4.5</span>
-          </td>
-        </tr>
-        <br />
-      </div>
-    </table>
-  </mat-card> 
-  <br />
-  
+          <tr>
+            <td class="heading-class">Company Name</td>
+            <td>
+              <span>{{ dataInfo.companyName }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">Country</td>
+            <td>
+              <span>{{ dataInfo.country }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">City</td>
+            <td>
+              <span>{{ dataInfo.city }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">Business Type</td>
+            <td>
+              <span>{{ dataInfo.businessType }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">Mobile Number</td>
+            <td>
+              <span>{{ dataInfo.mobileNumber }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">Email</td>
+            <td>
+              <span>{{ dataInfo.email }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">Company Mail</td>
+            <td>
+              <span>{{ dataInfo.companyMail }}</span>
+            </td>
+          </tr>
+        </div>
+      </table>
+    </mat-card>
+  </ng-container>
 </mat-dialog-content>

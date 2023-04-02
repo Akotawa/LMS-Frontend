@@ -22,7 +22,7 @@ export class DriverService {
 
   acceptOrReject(id, status): any {
     return this._apiService.post(
-      `cab/changeStatus?id=${id}&status=${status}`,
+      `laundry/changeStatus?id=${id}&status=${status}`,
       null
     );
   }

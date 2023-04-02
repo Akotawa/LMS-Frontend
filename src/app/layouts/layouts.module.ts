@@ -30,9 +30,11 @@ import { HorizontalMenuComponent } from './components/horizontal-menu/horizontal
 import { TopHorizontalMenuComponent } from './components/top-horizontal-menu/top-horizontal-menu.component';
 import { LayoutLoaderComponent } from './components/layout-loader/layout-loader.component';
 import { FooterComponent } from './components/footer/footer.component';
+// import {MatMenuModule} from '@angular/material/menu';
 
 // Directives.
 import { PortalScrollTopDirective } from './directives/portal-scroll-top.directive';
+import { CustomerPasswordChangeComponent } from '../views/customer/customer-password-change/customer-password-change.component';
 
 @NgModule({
   imports: [
@@ -52,6 +54,8 @@ import { PortalScrollTopDirective } from './directives/portal-scroll-top.directi
     LanguageMenuComponent,
     VerticalIconMenuComponent,
     AppsMenuComponent,
+    CustomerPasswordChangeComponent,
+    // MatMenuModule,
     ElementsMenuComponent,
     DashboardsMenuComponent,
     ThemeSwitcherMenuComponent,
@@ -65,6 +69,9 @@ import { PortalScrollTopDirective } from './directives/portal-scroll-top.directi
   ],
   providers: [
     LayoutService
-  ]
+  ],
+  entryComponents: [CustomerPasswordChangeComponent]
+
+  
 })
 export class LayoutsModule { }

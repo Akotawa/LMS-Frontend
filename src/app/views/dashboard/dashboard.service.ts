@@ -17,4 +17,7 @@ export class DashboardService {
       data
     );
   }
-}
+
+  getDashboardData(): any {
+    return this._apiService.get(`getDashboardData`);
+  }}

@@ -6,6 +6,7 @@ import { CustomerPasswordChangeComponent } from './customer-password-change/cust
 import { ReferFriendComponent } from './refer-friend/refer-friend.component';
 import { TrackOrderComponent } from './track-order/track-order.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { CustomerAddComponent } from './customer-add/customer-add.component';
 
 
 
@@ -43,6 +44,13 @@ const routes: Routes = [
   component: TrackOrderComponent,
   data: {
     title: 'Track Order'
+  }
+},
+{
+  path: 'customer-add',
+  component: CustomerAddComponent,
+  data: {
+    title: ' customer Add'
   }
 },
 {

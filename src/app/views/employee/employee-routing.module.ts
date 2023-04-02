@@ -5,6 +5,7 @@ import { OrderStatusComponent } from './order-status/order-status.component';
 import { OrderTransitComponent } from './order-transit/order-transit.component';
 import { InventoryManagementComponent } from './inventory-management/inventory-management.component';
 import { RegisterOrderComponent } from './register-order/register-order.component';
+import { AddInventoryComponent } from './add-inventory/add-inventory.component';
 
 
 
@@ -30,18 +31,25 @@ const routes: Routes = [
     title: 'Order Status'
   }
 },
-{
-  path: 'order-transit',
-  component: OrderTransitComponent,
-  data: {
-    title: 'Order Transit'
-  }
-},
+// {
+//   path: 'order-transit',
+//   component: OrderTransitComponent,
+//   data: {
+//     title: 'Order Transit'
+//   }
+// },
 {
   path: 'inventory',
   component: InventoryManagementComponent,
   data: {
     title: 'Inventory Management'
+  }
+},
+{
+  path: 'Inventory-Add',
+  component: AddInventoryComponent,
+  data: {
+    title: 'Inventory Add'
   }
 },
 ];

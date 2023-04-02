@@ -13,7 +13,7 @@ export class UtilityService {
     apiUrl: string = environment.apiUrl;
     defaultProfileImage = '/assets/images/no-image.jpg';
     defaultNewsImage = '/assets/images/no-image.jpg';
-    defaultCabImage = '/assets/images/car.png';
+    defaultLaundryImage = '/assets/images/laundry.png';
     defaultLogoImage = '/assets/images/dummy_logo.png';
     pagination: Pagination = { totalPages: 0, totalCount: 0, currentPage: 1, perPage: 10, data: [] };
     userRoleList: any = [];
@@ -76,7 +76,7 @@ export class UtilityService {
             url += file;
         } else {
            if(type === 'user') url = this.defaultProfileImage;
-           if(type === 'cab') url = this.defaultCabImage;
+           if(type === 'laundry') url = this.defaultLaundryImage;
            else url = this.defaultProfileImage;
         }
         return url;

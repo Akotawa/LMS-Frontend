@@ -10,16 +10,15 @@
       fxFlex="auto"
       fxLayout="column"
       fxLayoutAlign="space-between none">
-      <form [formGroup]="ReferForm" (ngSubmit)="goToLogin()" class="portal-forgot-card__item">
+      <form [formGroup]="ReferForm"  class="portal-forgot-card__item">
         <mat-form-field>
-          <input matInput formControlName="email" placeholder="Email Address" (keyup.enter)="goToLogin()">
+          <input matInput formControlName="email" placeholder="Email Address">
         </mat-form-field>
       </form>
       <button mat-raised-button i18n class="portal-forgot-card__item"
         type="submit"
         color="primary"
-        [disabled]="!ReferForm.valid"
-        (click)="goToLogin()">
+        (click)="submit()">
         Send Refer Link
       </button>
     </mat-card-content>

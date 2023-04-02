@@ -2,7 +2,7 @@
  <!-- <portal-menu-sidenav></portal-menu-sidenav> -->
  <form [formGroup]="registerLaundryForm" style="padding: 50px;">
   <h1 style="text-align: center;">Your Company Details</h1>
-  <div fxLayout="row" fxLayout.sm="column">
+  <div fxLayout="row">
     <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
       <mat-label>Company Name</mat-label>
       <input matInput formControlName="companyName" placeholder="Enter Company Name">
@@ -12,7 +12,7 @@
       <input matInput formControlName="city" placeholder="Enter City">
     </mat-form-field>
   </div>
-  <div fxLayout="row" fxLayout.sm="column">
+  <div fxLayout="row">
   <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
     <mat-label>Country</mat-label>
     <input matInput formControlName="country" placeholder="Enter Country">
@@ -21,12 +21,13 @@
     <mat-label>Company Mail</mat-label>
     <input matInput formControlName="companyMail" placeholder="Enter Company Mail">
   </mat-form-field>
-  <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width">
-    <mat-label>Business Type</mat-label>
-    <input matInput formControlName="businessType" placeholder="Select Business Type">
-  </mat-form-field>
   </div>
-  <h1 style="text-align: center;">Owner/Admin Details</h1>
+  <div fxLayout="row">
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width">
+      <mat-label>Business Type</mat-label>
+      <input matInput formControlName="businessType" placeholder=" Business Type Description">
+    </mat-form-field>
+  </div>
   <div fxLayout="row" fxLayout.sm="column">
     <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
       <mat-label>First Name</mat-label>
@@ -47,7 +48,7 @@
     <input matInput formControlName="email" type="email" placeholder="Enter Email Address">
   </mat-form-field>
   </div>  
-  <div fxLayout="row" fxLayout.sm="column">
+  <!-- <div fxLayout="row" fxLayout.sm="column">
   <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
     <mat-label>Password</mat-label>
     <input matInput type="password" formControlName="password" placeholder="Password">
@@ -56,7 +57,7 @@
     <mat-label>Confirm Password</mat-label>
     <input matInput type="password" formControlName="passwordConfirm" placeholder="Repeat Your Password">
   </mat-form-field>
-  </div>
+  </div> -->
   <mat-dialog-actions style="display: block">
     <div style="display: center">
       <button mat-raised-button (click)="sumit()">Submit</button>
