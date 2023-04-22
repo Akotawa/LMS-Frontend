@@ -39,7 +39,7 @@ export class ApiService {
       * @param json 
       * @param apiUrl 
       */
-     put(json: any, apiUrl: string): Promise<any> {
+     put(apiUrl: string,json: any): Promise<any> {
         return new Promise((resolve, reject) => {
             this._httpClient.put(`${environment.apiUrl}${apiUrl}`, json,)
                 .subscribe((response: any) => {

@@ -1,4 +1,8 @@
-
+<div *ngIf="isLoading">
+  <mat-progress-spinner [mode]="'indeterminate'" [diameter]="50" [strokeWidth]="5" [color]="'primary'"
+    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+  </mat-progress-spinner>
+</div>
  <!-- <portal-menu-sidenav></portal-menu-sidenav> -->
  <form [formGroup]="registerLaundryForm" style="padding: 50px;">
   <h1 style="text-align: center;">Your Company Details</h1>
@@ -17,17 +21,13 @@
     <mat-label>Country</mat-label>
     <input matInput formControlName="country" placeholder="Enter Country">
   </mat-form-field> 
-  <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
-    <mat-label>Company Mail</mat-label>
-    <input matInput formControlName="companyMail" placeholder="Enter Company Mail">
+
+  <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width">
+    <mat-label>Business Type</mat-label>
+    <input matInput formControlName="businessType" placeholder=" Business Type Description">
   </mat-form-field>
   </div>
-  <div fxLayout="row">
-    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width">
-      <mat-label>Business Type</mat-label>
-      <input matInput formControlName="businessType" placeholder=" Business Type Description">
-    </mat-form-field>
-  </div>
+ 
   <div fxLayout="row" fxLayout.sm="column">
     <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
       <mat-label>First Name</mat-label>
@@ -60,7 +60,8 @@
   </div> -->
   <mat-dialog-actions style="display: block">
     <div style="display: center">
-      <button mat-raised-button (click)="sumit()">Submit</button>
+      <button mat-raised-button color="primary" (click)="sumit()">Submit</button>
+
     </div>
   </mat-dialog-actions>
 </form>

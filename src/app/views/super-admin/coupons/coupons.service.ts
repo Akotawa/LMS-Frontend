@@ -37,7 +37,7 @@ export class CouponsService {
   //   );
   // }
   getCouponDetails(id): Promise<any> {
-    return this._apiService.get(`laundry/getCouponDetailsById?id=${id}`);
+    return this._apiService.get(`cab/getCouponDetailsById?id=${id}`);
   }
   getData(): Promise<any> {
     return this._apiService.get(`promoCodes`);
@@ -46,6 +46,7 @@ export class CouponsService {
   addCouponCode(data): Promise<any> {
     return this._apiService.post("promoCode/add", data);
   }
+  
   setstatus(id, active) {
     return this._apiService.post(
       `promoCode/setStatus?id=${id}&active=${active}`,

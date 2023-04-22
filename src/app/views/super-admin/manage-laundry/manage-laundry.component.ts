@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 import { ConstantService } from '../../../shared/services/constants.service';
 import { UtilityService } from '../../../shared/services/utility.service';
+import { RegisterLaundryComponent } from '../register-laundry/register-laundry.component';
 import { SuperAdminService } from '../super-admin.service';
 import { laundryDetailsComponent } from './details/details.component';
 import { laundryFeedbackComponent } from './feedback/feedback.component';
@@ -28,6 +30,7 @@ export class ManageLaundryComponent implements OnInit {
     private _sAdminService: SuperAdminService,
     public _constantService: ConstantService,
     private _superadminservice: SuperAdminService,
+    private _route : Router
 
   ) { }
 
@@ -58,6 +61,11 @@ export class ManageLaundryComponent implements OnInit {
     });
   }
 
+  edit(element: any): void {
+    this._route.navigateByUrl('/super-admin/edit-laundry/' + element);
+    this.getDataList()
+  }
+
   getDataList() {
     this.isLoading=true;
     this._superadminservice.getData().then((response: any) => {
@@ -78,13 +86,6 @@ export class ManageLaundryComponent implements OnInit {
   }
 
   orderDetails(id) {
-    // this._driverService.getBookingList(id).then((response: any) => {
-    //   const dialogRef = this.dialog.open(BookingDetailsComponent, {
-    //     width: "850px",
-    //     data: response.data,
-    //     disableClose: true,
-    //   });
-    // });
 
     const dialogRef = this.dialog.open(orderDetailsComponent, {
       width: "850px",
@@ -119,7 +120,7 @@ export class ManageLaundryComponent implements OnInit {
   }
 
     deleteById(id: any){
-    if (confirm("Are you sure you want to delete this Laundry?")) {
+    if (confirm("Are you sure you want to delete this ?")) {
       this._superadminservice.deleteById(id)
           .then((response: any) => {
               if (response && response.status == 'OK') {

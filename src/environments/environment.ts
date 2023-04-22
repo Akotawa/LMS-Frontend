@@ -7,11 +7,6 @@ export const environment = {
   production: false,
   gdaxURL: 'wss://ws-feed.gdax.com',
   hmr: false,
-  // apiUrl: 'http://54.39.132.108:8080/api/',
-  //apiUrl: 'http://192.168.1.2:8080/api/'
-  //apiUrl: 'http://192.168.29.218:9090/api/',
-  // apiUrl: 'http://139.59.24.193:9090/uber/api/'
-  apiUrl: 'http://192.168.29.150:8080/api/'
-  //  apiUrl: 'http://159.65.157.19:8080/laundry/api/'
+  apiUrl:'http://localhost:8080/api/'
 
 };

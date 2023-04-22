@@ -5,7 +5,6 @@ import { DeshboardDetailsComponent } from "../../dashboards/analytics/deshboard-
 import { ConstantService } from "../../shared/services/constants.service";
 import { UtilityService } from "../../shared/services/utility.service";
 import { DashboardService } from "../dashboard/dashboard.service";
-import { UserService } from "../user/user-service.service";
 
 @Component({
   selector: "app-dashboard",
@@ -50,6 +49,7 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getDataList()
     // this.pagination = this._utilityService.pagination;
     // this.getDataList();
   }
@@ -61,9 +61,9 @@ export class DashboardComponent implements OnInit {
   // }
   getDataList() {
     this._dashboardService.getDashboardData().then((response: any) => {
-      if (response && response.status === "OK") {
-        console.log(">>>>>>>>", this.dataSource);
-      }
+      this.dataSource = response.data;
+      console.log(this.dataSource);
+      
     });
   }
 }

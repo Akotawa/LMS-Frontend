@@ -26,45 +26,46 @@
       </button>
     </mat-card-content>
 
-    <mat-card-content
-      fxFlex="auto"
-      fxFlex.gt-sm="50%"
-      fxLayout="column"
-      fxLayoutAlign="space-between none"
-      fxLayoutGap="16px">
-      <form [formGroup]="registerForm">
-        <div fxLayout="row" fxLayout.sm="column">
-          <mat-form-field class="portal-remove-fixed-infix-width portal-first-name">
-            <input matInput formControlName="first_name" placeholder="First Name">
-          </mat-form-field>
-          <mat-form-field class="portal-remove-fixed-infix-width">
-            <input matInput formControlName="last_name" placeholder="Last Name">
-          </mat-form-field>
-        </div>
-        <mat-form-field>
-          <input matInput formControlName="email" type="email" placeholder="Email Address">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="password" formControlName="password" placeholder="Password">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="password" formControlName="passwordConfirm" placeholder="Repeat Your Password">
-          <div *ngIf="registerForm.hasError('mismatchedPasswords')" i18n>
-            Passwords do not match.
-          </div>
-        </mat-form-field>
-      </form>
 
-      <div fxLayout="column">
-        <button mat-raised-button i18n
-          type="button"
-          fxFlex="none"
-          color="primary"
-          (click)="register()"
-          [disabled]="!registerForm.valid">
-          Register
-        </button>
-      </div>
-    </mat-card-content>
+ <!-- <portal-menu-sidenav></portal-menu-sidenav> -->
+ <form [formGroup]="registerCustomerForm" style="padding: 50px; margin:20px">
+  <h1 style="text-align: center;"> Add Customer</h1>
+  <div fxLayout="row" fxLayout.sm="column" style="gap: 15px;">
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Enter email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>FullName</mat-label>
+      <input matInput formControlName="fullName" type="text" placeholder="Enter FullName">
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayout.sm="column" style="gap: 15px;">
+
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>MobileNumber</mat-label>
+      <input matInput formControlName="mobileNumber" type="text" placeholder="Enter MobileNumber">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="Enter Password">
+    </mat-form-field>
+    </div>
+  <div fxLayout="row" fxLayout.sm="column">
+
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>HomeAddress</mat-label>
+      <input matInput formControlName="homeAddress" type="text" placeholder="Enter HomeAddress">
+    </mat-form-field>
+    </div>
+
+  <mat-dialog-actions style="display: block">
+    <div style="display: center">
+      <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+    </div>
+  </mat-dialog-actions>
+</form>
+
   </mat-card>
 </div>

@@ -11,11 +11,11 @@ import { AuthGuardService } from '../app/shared/services/auth/auth-guard.service
 
 const routes: Routes =
   [
-    // {
-    //   path: '',
-    //   redirectTo: 'external/login',
-    //   pathMatch: 'full'
-    // },
+    {
+      path: '',
+      redirectTo: 'external/login',
+      pathMatch: 'full'
+    },
     {
       path: '',
       data: {
@@ -28,6 +28,16 @@ const routes: Routes =
           path: 'dashboard',
           loadChildren: './views/dashboard/dashboard.module#DashboardModule'
         }, 
+        
+        {
+          path: 'price-list',
+          loadChildren: './views/price-list/price-list.module#PriceListModule'
+        }, 
+        {
+          path: 'rating-list',
+          loadChildren: './views/rating/rating-list.module#RatingListModule'
+      },
+
         {
           path: 'super-admin',
           loadChildren: './views/super-admin/super-admin.module#SuperAdminModule'
@@ -46,10 +56,10 @@ const routes: Routes =
         },
 
 
-        // {
-        //   path: 'pages',
-        //   loadChildren: './pages/pages.module#PagesModule'
-        // },
+        {
+          path: 'pages',
+          loadChildren: './pages/pages.module#PagesModule'
+        },
         // {
         //   path: 'dashboards',
         //   loadChildren: './dashboards/dashboards.module#DashboardsModule'

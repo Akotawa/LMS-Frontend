@@ -63,25 +63,14 @@ export class CreateFormService {
     createUserForm(user: User): FormGroup {
         return this._formBuilder.group({
             id: user ? [user.id] : null,
-            createdAt: user ? [user.createdAt] : null,
-            updatedAt: user ? [user.updatedAt] : null,
-            profilePhoto: user ? [user.profilePhoto] : null,
-            userName: user ? [user.userName] : null,
-            firstName: user ? [user.firstName] : null,
-            lastName: user ? [user.lastName] : null,
-            mobile: user ? [user.mobile] : null,
-            emergencyNumber: user ? [user.emergencyNumber] : null,
             email: [user ? user.email : null, [Validators.required, Validators.email]],
-            address: user ? [user.address] : null,
-            country: user ? [user.country] : null,
-            state: user ? [user.state] : null,
-            city: user ? [user.city] : null,
-            pincode: user ? [user.pincode] : null,
-            // enable: user ? [user.enable] : null,
-            userType: user ? [user.userType] : 1,
+            fullName: user ? [user.fullName] : null,
+            homeAddress: user ? [user.homeAddress] : null,
+            mobileNumber: user ? [user.mobileNumber] : null,
+            profileImage: user ? [user.profileImage] : null,
             password: user ? [user.password] : null,
-            confirmPassword: user ? [user.confirmPassword] : null,
-            status: user ? [user.status] : true
+         
         });
     }
+
 }

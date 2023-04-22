@@ -34,7 +34,7 @@ export class AddCouponComponent implements OnInit {
             response.message,
             response.status
           );
-      
+          this.matDialogRef.close(true);
         } else {
           this._utilityService.openMatSnackBar(
             response.message,
@@ -46,8 +46,8 @@ export class AddCouponComponent implements OnInit {
         this._utilityService.openMatSnackBar("Internal Server error", "ERROR");
       }
     );
-    this.matDialogRef.close(); // close the dialog
-    location.reload(); // refresh the page
+     // close the dialog
+    // location.reload(); // refresh the page
   }
 
 }

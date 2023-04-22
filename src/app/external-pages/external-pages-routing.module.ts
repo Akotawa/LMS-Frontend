@@ -24,6 +24,13 @@ const routes: Routes = [
   }
 },
 {
+  path: 'edit-register/:id',
+  component: RegisterComponent,
+  data: {
+    title: 'Register'
+  }
+},
+{
   path: 'forgot-password',
   component: ForgotPasswordComponent,
   data: {

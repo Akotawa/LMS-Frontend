@@ -10,7 +10,10 @@ export class CustomerService {
     "contactNumber",
     "email",
     "orderStatus",
-    "netAmount",
+    "quantity",
+    "servicereview",
+    "rating",
+    "feedback",
     "action",
   ];
   constructor(private _apiService: ApiService) { }
@@ -23,6 +26,11 @@ export class CustomerService {
     const url = `customer/referFriend/${referid}/${encodeURIComponent(email)}`;
     return this._apiService.post(url, data);
   }
+  forgot(email: any, data: any): Promise<any> {
+    const url = `customer/forgotPassword/${encodeURIComponent(email)}`;
+    return this._apiService.post(url, data);
+  }
+  
 
   trackOrder(orderId: any): Promise<any> {
     const url = `customer/order/${orderId}`;
@@ -34,10 +42,34 @@ export class CustomerService {
       `customer/order/${id}`
     );
   }
-  
-  changePassword(id: string, password: string, data): Promise<any> {
-    return this._apiService.post(`password/update${id}?password=${password}`, data);
+  getFeedback(id:any): Promise<any> {
+    return this._apiService.get(
+  `laundry/${id}/feedbacks`
+    );
   }
   
+  changePassword(id: string, password: string, data): Promise<any> {
+    return this._apiService.put(`password/update/${password}`, data);
+  }
+
+  refundRewash(data): Promise<any> {
+    return this._apiService.post(`add/serviceReview`,data);
+  }
+  
+  addFeedback(data): Promise<any> {
+    return this._apiService.post(`feedback/add`,data);
+  }
+  
+  getData(id:any): Promise<any> {
+    return this._apiService.get(`ratings/get/${id}`);
+  }
+
+  getDataFeedback(id:any): Promise<any> {
+    return this._apiService.get(`feedbacks/laundry/${id}`);
+  }
+
+  getOrderDetails(id:any): Promise<any> {
+    return this._apiService.get(`get/order/${id}`);
+  }
 
 }

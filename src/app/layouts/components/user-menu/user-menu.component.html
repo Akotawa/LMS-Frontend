@@ -2,10 +2,19 @@
 
 <button mat-button [matMenuTriggerFor]="menu" mat-raised-button color="primary">Menu</button>
 <mat-menu #menu="matMenu">
+
+  <button mat-menu-item  (click)="edit()" *ngIf="user?.role === 3" >
+    <mat-icon matListIcon>account_circle</mat-icon>
+    My Profile
+  </button>
+
   <button mat-menu-item (click)="changePassword()">
     <mat-icon matListIcon>lock_open</mat-icon>
-    Change Password</button>
+    Change Password
+  </button>
+
   <button mat-menu-item  (click)="_loginService.logout()">
     <mat-icon matListIcon>exit_to_app</mat-icon>
-    Sign Out</button>
+    Sign Out
+  </button>
 </mat-menu>

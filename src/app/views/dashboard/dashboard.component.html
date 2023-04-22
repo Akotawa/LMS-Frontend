@@ -3,100 +3,52 @@
     <div class="portal-widget" fxFlex="1 0 auto" fxFlex.lg="50">
       <mat-card style="display: flex">
         <img
-          src="../../../assets/images/laundry-logo.png"
+          src="../../../assets/images/clipboard.png"
           alt=""
           style="width: 60px"
         />
         <div style="margin-left: 10px">
           <mat-card-title>
-            <!-- {{
-              barChart && barChart.totalDriver
-                ? barChart.totalDriver
-                : 0
-            }} -->72
+           {{ dataSource?.totalOrder }}
+
           </mat-card-title>
-          <mat-card-subtitle>Total Order Count</mat-card-subtitle>
+          <mat-card-subtitle>Total Orders</mat-card-subtitle>
         </div>
       </mat-card>
     </div>
     <div class="portal-widget" fxFlex="1 0 auto" fxFlex.lg="50">
       <mat-card style="display: flex">
         <img
-          src="../../../assets/images/laundry-logo.png"
+          src="../../../assets/images/complete.gif"
           alt=""
           style="width: 60px"
         />
         <div style="margin-left: 10px">
           <mat-card-title>
-            <!-- {{
-              barChart && barChart.totalUser
-                ? barChart.totalUser
-                : 0
-            }} -->40
+          {{ dataSource?.totalReceivedOrder }}
+
           </mat-card-title>
-          <mat-card-subtitle> Total Order Completed </mat-card-subtitle>
+          <mat-card-subtitle> Completed Orders</mat-card-subtitle>
         </div>
       </mat-card>
     </div>
     <div class="portal-widget" fxFlex="1 0 auto" fxFlex.lg="50">
       <mat-card style="display: flex">
         <img
-          src="../../../assets/images/laundry-logo.png"
+          src="../../../assets/images/pending.png"
           alt=""
           style="width: 60px"
         />
         <div style="margin-left: 10px">
           <mat-card-title>
-            <!-- {{
-              barChart && barChart.totalBooking
-                ? barChart.totalBooking
-                : 0
-            }} -->
-            32
+  
+            {{ dataSource?.totalPendingOrder }}
+
           </mat-card-title>
-          <mat-card-subtitle>Total order pending</mat-card-subtitle>
+          <mat-card-subtitle>Pending Orders</mat-card-subtitle>
         </div>
       </mat-card>
     </div>
   </div>
-  <!-- chart -->
-  <!-- <mat-card fxLayout="column" fxLayoutAlign="space-between stretch">
-    <div class="portal-widget__padding  portal-widget__content--flex" fxLayout="row" fxLayoutAlign="center center">
-      <div fxFlex>
-        <mat-card-title class="mat-card-title" il8n>Performance</mat-card-title>
-         <mat-card-subtitle class="mat-card-subtitle" il8n>Order by market share</mat-card-subtitle> 
-      </div>
-      <div>
-        <mat-menu #annualPerformanceMenu="matMenu">
-          <button mat-menu-item (click)="changeSales('Annual')" i18n>Annual</button>
-          <button mat-menu-item (click)="changeSales('Monthly')" i18n>Month</button>
-          <button mat-menu-item (click)="changeSales('Weekly')" i18n>Week</button>
-          <button mat-menu-item (click)="changeSales('Daily')" i18n>Day</button>
-        </mat-menu>
-        <mat-menu #annualPerformanceMenu="matMenu">
-          <button mat-menu-item  i18n>Annual</button>
-          <button mat-menu-item  i18n>Month</button>
-          <button mat-menu-item  i18n>Week</button>
-          <button mat-menu-item  i18n>Day</button>
-        </mat-menu>
-        <button mat-icon-button [matMenuTriggerFor]="annualPerformanceMenu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-      </div>
-    </div> -->
-<!--   
-    <mat-card-content>
-      <div class="portal-bar-chart" >
-        <canvas baseChart
-          [datasets]="barChartDatasets"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [colors]="barChartColors"
-          [legend]="true"
-          chartType="bar" 
-          ></canvas>
-      </div>
-    </mat-card-content>
-  </mat-card> -->
 <br>
 </div>

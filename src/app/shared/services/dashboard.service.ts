@@ -43,7 +43,7 @@ export class DashboardService implements Resolve<any>{
     }
 
     getData():any {
-        return this._apiService.get(`laundry/getAllLaundryDetails`)
+        return this._apiService.get(`cab/getAllCabDetails`)
     }
     booking():any {
         return this._apiService.get(`booking/getBookingListByUserId?userId=2`)

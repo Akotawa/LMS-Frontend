@@ -19,5 +19,5 @@ export class DashboardService {
   }
 
   getDashboardData(): any {
-    return this._apiService.get(`getDashboardData`);
+    return this._apiService.get(`get/details`);
   }}

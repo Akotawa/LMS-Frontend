@@ -24,6 +24,13 @@ const routes: Routes = [
   }
 },
 {
+  path: 'edit-laundry/:id',
+  component: RegisterLaundryComponent,
+  data: {
+    title: 'Register'
+  }
+},
+{
   path: 'manage-laundry',
   component: ManageLaundryComponent,
   data: {

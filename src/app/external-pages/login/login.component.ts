@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
           // profileImage: response.data.user_details.profilePhoto,
           role: response.data.user_details.role,
           laundryid:response.data.user_details.laundryid,
+          custumerid:response.data.user_details.custumerid,
           referid:response.data.user_details.referid
         };
 
@@ -79,6 +80,8 @@ export class LoginComponent implements OnInit {
   register(): void {
     this.router.navigate(['/external/register']);
   }
+
+
 
 
 }

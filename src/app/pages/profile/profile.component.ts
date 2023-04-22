@@ -7,6 +7,8 @@ import { UtilityService } from '../../shared/services/utility.service';
 import { User } from '../../shared/models/user.model';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { LoginService } from '../../shared/services/login.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +17,8 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class ProfileComponent {
   formGroup: FormGroup;
+  registerCustomerForm: FormGroup;
+  elementId:any
   passwordForm: FormGroup;
   notificationsForm: FormGroup;
   user: User = new User();
@@ -25,102 +29,48 @@ export class ProfileComponent {
   statefilteredOptions: Observable<string[]>;
   cityfilteredOptions: Observable<string[]>;
   loading: boolean;
-
+  sessionUser:any
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private _userService: UserService,
     private _createFormService: CreateFormService,
-    public _utilityService: UtilityService
+    public _utilityService: UtilityService,
+    private route: ActivatedRoute,
+    private _loginService:LoginService,
+
+
   ) {
     this.formGroup = this._createFormService.createUserForm(this.user);
-    this.getCountries();
-    this.statefilteredOptions = this.formGroup.controls['state'].valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
+    this.sessionUser = JSON.parse(localStorage.getItem("user"));
 
-    this.cityfilteredOptions = this.formGroup.controls['city'].valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filterCity(value))
-      );
-    let user = JSON.parse(localStorage.getItem("user"));
-    this._userService.getUserById(user.id).then((response: any) => {
-      this.user = response.data;
-      this.formGroup = this._createFormService.createUserForm(this.user);
+  }
 
-      this.statefilteredOptions = this.formGroup.controls['state'].valueChanges
-        .pipe(
-          startWith(''),
-          map(value => this._filter(value))
-        );
-
-      this.cityfilteredOptions = this.formGroup.controls['city'].valueChanges
-        .pipe(
-          startWith(''),
-          map(value => this._filterCity(value))
-        );
-    })
-
-    this.passwordForm = this.fb.group({
-      oldPassword: ['', Validators.required],
-      password: ['', Validators.required],
-      passwordConfirm: ['', Validators.required]
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.elementId = params['id'];
+      console.log(this.elementId);
     });
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.stateInfo.filter(option => option.toLowerCase().includes(filterValue));
-  }
-
-  private _filterCity(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.cityInfo.filter(option => option.toLowerCase().includes(filterValue));
-  }
-
-  getCountries() {
-    var data2 = require('../../shared/services/all-country.json');
-    this.countryInfo = data2.Countries;
-    if (this.user.country) {
-      this.onChangeCountry(this.user.country);
-    }
-  }
-
-  onChangeCountry(countryValue) {
-    this.stateInfo = [];
-    for (let i = 0; i < this.countryInfo[countryValue].states.length; i++) {
-      this.stateInfo.push(this.countryInfo[countryValue].states[i].stateName);
-    }
-    if (this.user.state) {
-      this.onChangeState(this.user.state);
-    }
-    this.statefilteredOptions = this.formGroup.controls['state'].valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
-  }
-
-  onChangeState(stateValue) {
-    for (let i = 0; i < this.countryInfo[0].states.length; i++) {
-      if (this.countryInfo[0].states[i].stateName == stateValue) {
-        this.cityInfo = [];
-        for (let j = 0; j < this.countryInfo[0].states[i].cities.length; j++) {
-          this.cityInfo.push(this.countryInfo[0].states[i].cities[j]);
+  
+    if (this.elementId) {
+      this._userService.getUserById(this.elementId).then((response: any) => {
+        if (response) {
+          this.user = new User(response.data);
+          this.formGroup = this._createFormService.createUserForm(this.user);
+        } else {
+          this.formGroup = this._createFormService.createUserForm(this.user);
         }
-      }
+      }, error => {
+        console.log(error);
+      });
+    } else {
+      this.formGroup = this._createFormService.createUserForm(this.user);
     }
-    this.cityfilteredOptions = this.formGroup.controls['city'].valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filterCity(value))
-      );
-    //console.log(this.cityInfo);
   }
+  
+
+
+
 
   showSnackbar(): void {
     this.snackBar.open('Settings Updated', '', {
@@ -130,15 +80,25 @@ export class ProfileComponent {
 
   update() {
     const data = this.formGroup.getRawValue();
-    let formData = new FormData();
-    delete data['confirmPassword'];
-    // formData.append('file', this.multipart);
-    formData.append('details', JSON.stringify(data));
+    let apiData={
+      "email": data.email,
+      "fullName": data.fullName,
+      "homeAddress": data.fullName,
+      "mobileNumber": data.mobileNumber,
+      "password": data.password,
+      "profileImage": "null"
+    }
+    const id = this.formGroup.get('id').value;
+     data.id = this.sessionUser.id;
+    console.log('cutomerid value', id);
     this.loading = true;
-    this._userService.addOrSaveUser(formData, 'edit').then((response: any) => {
+    this._userService.addOrSaveUser(this.sessionUser.id,apiData).then((response: any) => {
       this.loading = false;
+      this.formGroup.reset()
       if (response && response.status === 'OK') {
         this._utilityService.openMatSnackBar(response.message, response.status);
+        this._loginService.logout()
+
       } else {
         this._utilityService.openMatSnackBar(response.message, response.status);
       }

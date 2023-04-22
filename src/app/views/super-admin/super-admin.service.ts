@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { ApiService } from "../../shared/services/api.service";
 
 @Injectable({
@@ -12,7 +13,11 @@ export class SuperAdminService {
     "status",
     "action",
   ];
-  constructor(private _apiService: ApiService) { }
+ 
+  constructor(
+    private _apiService: ApiService,
+    private _formBuilder: FormBuilder,
+    ) { }
 
   deleteById(id): Promise<any> {
     return this._apiService.delete(`laundry/deleteUserById?id=${id}`);
@@ -20,10 +25,24 @@ export class SuperAdminService {
 
   acceptOrReject(id, status): any {
     return this._apiService.post(
-      `laundry/changeStatus?id=${id}&status=${status}`,
+      `cab/changeStatus?id=${id}&status=${status}`,
       null
     );
   }
+  
+
+  createRegisterForm(element: any): FormGroup {
+    return this._formBuilder.group({
+      firstName: element ? [element.firstName] : '',
+      lastName: element ? [element.lastName] : '',
+      email: element ? [element.email] : '',
+      companyName: element ? [element.companyName] : '',
+      city: element ? [element.city] : '',
+      country: element ? [element.country] : '',
+      businessType: element ? [element.businessType] : '',
+      mobileNumber: element ? [element.mobileNumber] : '',
+    });
+}
 
   // getData(data): Promise<any> {
   //   return this._apiService.post(
@@ -40,7 +59,7 @@ export class SuperAdminService {
     );
   }
   statusUser(id, active) {
-    return this._apiService.post(
+    return this._apiService.put(
       `laundry/${id}/${active}`,
       null
     );
@@ -64,12 +83,28 @@ export class SuperAdminService {
     return this._apiService.get(`laundry`);
   }
 
-  laundryAdd(data): Promise<any> {
-    return this._apiService.post("laundry/add", data);
-  }
+  // laundryAdd(data): Promise<any> {
+  //   return this._apiService.post("laundry/add", data);
+  // }
 
   getlaundryDetails(id): Promise<any> {
     return this._apiService.get(`laundry/${id}`);
+  }
+  
+  // addOrSaveData(data): any {
+  //   return this._apiService.put(`laundry/update`, data);
+  // }
+  
+
+  laundryAdd(data, id?: string): Promise<any> {
+    if (id) {
+      // update existing item
+      data['id'] = id;
+      return this._apiService.put(`laundry/update`, data);
+    } else {
+      // add new item
+      return this._apiService.post("laundry/add", data);
+    }
   }
   
 }

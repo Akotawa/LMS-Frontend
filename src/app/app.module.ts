@@ -6,6 +6,8 @@ import { ChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutsModule } from './layouts/layouts.module';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+
 
 import { AppComponent } from './app.component';
 
@@ -23,6 +25,7 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
+
     
   ],
   imports: [
@@ -31,6 +34,7 @@ export function tokenGetter() {
     LayoutsModule,
     ChartsModule,
     MatMenuModule,
+    MatIconModule,
     
     AppRoutingModule,
     JwtModule.forRoot({

@@ -1,224 +1,290 @@
 <div fxLayout="column" fxFlexFill>
   <mat-toolbar class="portal-side-menu-top-toolbar">
     <mat-toolbar-row fxLayout="row">
-      <img class="portal-toolbar-brand" src="assets/images/laundry-logo.png" alt="Portal">
+      <img
+        class="portal-toolbar-brand"
+        src="assets/images/laundry-logo.png"
+        alt="Portal"
+      />
       <span class="portal-toolbar-brand-text" i18n>Laundry Management</span>
     </mat-toolbar-row>
   </mat-toolbar>
-  <div class="portal-sidnav-menu portal-hide-scrollbars" fxFlex="nogrow noshrink">
-
-    <!-- <mat-nav-list> -->
-    <!-- <a mat-list-item routerLink="/dashboards/analytics" routerLinkActive="portal-menu--active">
-        <mat-icon matListIcon>dashboard</mat-icon>
-        <h3 matLine>Dashboard</h3>
-      </a> -->
-    <!-- <a *ngIf="user.role === 0" mat-list-item routerLink="/user/list" routerLinkActive="portal-menu--active">
-        <mat-icon matListIcon>person</mat-icon>
-        <h3 matLine>Users</h3>
-      </a>
-      <a mat-list-item routerLink="/dashboard" routerLinkActive="portal-menu--active">
-        <mat-icon matListIcon>dashboard</mat-icon>
-        <h3 matLine>Dashboard </h3>
-      </a>
-
-      </a>
-      <a mat-list-item routerLink="/user" routerLinkActive="portal-menu--active">
-        <mat-icon matListIcon>person</mat-icon>
-        <h3 matLine>Customer </h3>
-      </a>
-      <a mat-list-item routerLink="/coupons" routerLinkActive="portal-menu--active">
-        <mat-icon matListIcon>dashboard</mat-icon>
-        <h3 matLine>Coupons </h3>
-      </a> -->
-
-    <!-- <a mat-list-item routerLink="/execution" routerLinkActive="portal-menu--active">
-        <mat-icon matListIcon>palette</mat-icon>
-        <h3 matLine>Execution</h3>
-      </a>
-      <a mat-list-item routerLink="/results" routerLinkActive="portal-menu--active">
-        <mat-icon matListIcon>palette</mat-icon>
-        <h3 matLine>Results</h3>
-      </a>
-      <a mat-list-item routerLink="/filter" routerLinkActive="portal-menu--active">
-        <mat-icon matListIcon>filter</mat-icon>
-        <h3 matLine>Filter</h3>
-      </a>  -->
-    <!-- </mat-nav-list> -->
-
-    <!-- home & dashboard menu -->
-    <!-- <mat-expansion-panel expanded="true">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>home</mat-icon>
-          <h3>Dashboards</h3>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/dashboards/analytics" routerLinkActive="portal-menu--active">
-          <mat-icon matListIcon>insert_chart</mat-icon>
-          <h3 matLine>Analytics</h3>
-          <strong class="portal-sidnav-menu__end_detail">4</strong>
-        </a>
-        <a mat-list-item routerLink="/dashboards/ecommerce" routerLinkActive="portal-menu--active">
-          <mat-icon matListIcon>shopping_cart</mat-icon>
-          <h3 matLine>Ecommerce</h3>
-        </a>
-        <a mat-list-item routerLink="/dashboards/crypto" routerLinkActive="portal-menu--active">
-          <mat-icon matListIcon>euro_symbol</mat-icon>
-          <h3 matLine>CryptoCurrency</h3>
-        </a>
-        <a mat-list-item routerLink="/dashboards/project" routerLinkActive="portal-menu--active">
-          <mat-icon matListIcon>event_note</mat-icon>
-          <h3 matLine>Project</h3>
-        </a>
-      </mat-nav-list>
-    </mat-expansion-panel> -->
-
-    <!-- apps menu -->
-
-    <!-- <h3 class="portal-sidnav-menu__subheader">Apps</h3>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>desktop_windows</mat-icon>
-          <h3>Apps</h3>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-        <a mat-list-item [routerLink]="['/apps/email', { outlets: { list: 'inbox', messages: 'none' } }]" routerLinkActive="portal-menu--active">
-          <mat-icon matListIcon>email</mat-icon>
-          <h3 matLine>Email</h3>
-        </a>
-        <a mat-list-item routerLink="/apps/todo" routerLinkActive="portal-menu--active">
-          <mat-icon matListIcon>check_circle</mat-icon>
-          <h3 matLine>Todo</h3>
-        </a>
-        <a mat-list-item routerLink="/apps/spotify" routerLinkActive="portal-menu--active" [routerLinkActiveOptions]="{ exact: true }">
-          <mat-icon fontSet="fa" fontIcon="fa-spotify" matListIcon></mat-icon>
-          <h3 matLine>Spotify</h3>
-        </a>
-        <a mat-list-item routerLink="/apps/maps" routerLinkActive="portal-menu--active">
-          <mat-icon matListIcon>pin_drop</mat-icon>
-          <h3 matLine>Maps</h3>
-        </a>
-        <a mat-list-item routerLink="/apps/chat" routerLinkActive="portal-menu--active">
-          <mat-icon matListIcon>chat</mat-icon>
-          <h3 matLine>Chat</h3>
-        </a>
-        <a mat-list-item routerLink="/apps/calendar" routerLinkActive="portal-menu--active">
-          <mat-icon matListIcon>date_range</mat-icon>
-          <h3 matLine>Calendar</h3>
-        </a>
-        <a mat-list-item routerLink="/apps/contacts" routerLinkActive="portal-menu--active">
-          <mat-icon matListIcon>face</mat-icon>
-          <h3 matLine>Contacts</h3>
-        </a>
-        <a mat-list-item routerLink="/apps/notes" routerLinkActive="portal-menu--active">
-          <mat-icon matListIcon>event_note</mat-icon>
-          <h3 matLine>Notes</h3>
-        </a>
-      </mat-nav-list>
-    </mat-expansion-panel> -->
-
-    <!-- pages menu -->
+  <div
+    class="portal-sidnav-menu portal-hide-scrollbars"
+    fxFlex="nogrow noshrink"
+  >
     <mat-nav-list>
-      <!-- <a mat-list-item routerLink="/external/login" routerLinkActive="portal-menu--active">
-        <h3 matLine>Login</h3>
+      <a
+        mat-list-item
+        routerLink="/dashboard"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 0 || user?.role === 1 || user?.role === 2"
+      >
+        <ng-container>
+          <mat-icon>dashboard</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Dashboard
+          </h3>
+        </ng-container>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/price-list"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 1 || user?.role === 2"
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Price-List
+          </h3>
+        </ng-container>
+      </a>
+      <!-- <a
+      mat-list-item
+      routerLink="/rating-list"
+      routerLinkActive="portal-menu--active"
+      *ngIf=" user?.role === 3"
+
+    >
+      <ng-container>
+        <mat-icon>account_circle</mat-icon>
+        <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+          Rating-List
+        </h3>
+      </ng-container>
+    </a> -->
+
+      <a
+        mat-list-item
+        routerLink="/super-admin/register-laundry"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 0"
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Register-Laundry
+          </h3>
+        </ng-container>
+      </a>
+
+      <a
+        mat-list-item
+        routerLink="/super-admin/manage-laundry"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 0"
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Manage-Laundry
+          </h3>
+        </ng-container>
+      </a>
+
+      <a
+        mat-list-item
+        routerLink="/super-admin/coupons"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 0"
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>Coupons</h3>
+        </ng-container>
+      </a>
+      <!-- end superadmin -->
+      <!-- start admin -->
+      <a
+        mat-list-item
+        routerLink="/admin/register-employee"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 1"
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Register-Employee
+          </h3>
+        </ng-container>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/admin/manage-employee"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 1"
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Manage-Employee
+          </h3>
+        </ng-container>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/admin/add-Service"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 1"
+
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Add-Service
+          </h3>
+        </ng-container>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/admin/service-catalogue"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 1"
+
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Service-Catalogue
+          </h3>
+        </ng-container>
+      </a>
+
+      <!-- end admin -->
+      <!-- startemploye -->
+      <a
+        mat-list-item
+        routerLink="/employee/manage-Register"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 3"
+
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Order-Register
+          </h3>
+        </ng-container>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/employee/manage-order"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 2"
+
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Order-Management
+          </h3>
+        </ng-container>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/employee/inventory"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 1 || user?.role === 2"
+
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Inventory-Management
+          </h3>
+        </ng-container>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/employee/Inventory-Add"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 1 || user?.role === 2"
+
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Inventory-Add
+          </h3>
+        </ng-container>
+      </a>
+      <!-- end employe -->
+      <!-- startcustumer -->
+      <a
+        mat-list-item
+        routerLink="/customer/track-order"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 3"
+
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Track Order
+          </h3>
+        </ng-container>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/customer/refer"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 3"
+
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Refer a friend
+          </h3>
+        </ng-container>
+      </a>
+
+      <a
+        mat-list-item
+        routerLink="/customer/contact"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 3"
+
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            Contact us/ Report a problem
+          </h3>
+        </ng-container>
+      </a>
+      <!-- <a
+        mat-list-item
+        routerLink="/pages/profile"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 3"
+
+      >
+        <ng-container>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+            My Profile
+          </h3>
+        </ng-container>
       </a> -->
-      <a mat-list-item routerLink="/dashboard" routerLinkActive="portal-menu--active">
+      <!-- <a
+        mat-list-item
+        routerLink="/customer/feedback"
+        routerLinkActive="portal-menu--active"
+        *ngIf="user?.role === 3"
+
+      >
         <ng-container>
-          <mat-icon>dashboard</mat-icon>
-          <h3 style="
-        padding-top: 16px;
-        padding-left: 17px;
-    " matLine>Dashboard</h3>
-        </ng-container>
-      </a>
-      <!-- <a mat-list-item routerLink="/dashboard" routerLinkActive="portal-menu--active">
-        <ng-container>
-          <mat-icon>dashboard</mat-icon>
-          <h3 style="
-        padding-top: 16px;
-        padding-left: 17px;
-    " matLine>Laundry</h3>
-        </ng-container>
-      </a>
-      <a mat-list-item routerLink="/super-admin/coupons" routerLinkActive="portal-menu--active">
-        <ng-container>
-          <mat-icon>dashboard</mat-icon>
-          <h3 style="
-        padding-top: 16px;
-        padding-left: 17px;
-    " matLine>Coupons</h3>
-        </ng-container>
-      </a>
-      <a mat-list-item routerLink="/admin/register-employee" routerLinkActive="portal-menu--active">
-        <ng-container>
-          <mat-icon>dashboard</mat-icon>
-          <h3 style="
-        padding-top: 16px;
-        padding-left: 17px;
-    " matLine>Employee</h3>
-        </ng-container>
-      </a>
-      <a mat-list-item routerLink="/admin/service-catalogue" routerLinkActive="portal-menu--active">
-        <ng-container>
-          <mat-icon>dashboard</mat-icon>
-          <h3 style="
-        padding-top: 16px;
-        padding-left: 17px;
-    " matLine>Service Catalog</h3>
-        </ng-container>
-      </a>
-      <a mat-list-item routerLink="/employee/inventory" routerLinkActive="portal-menu--active">
-        <ng-container>
-          <mat-icon>dashboard</mat-icon>
-          <h3 style="
-        padding-top: 16px;
-        padding-left: 17px;
-    " matLine>Inventory</h3>
-        </ng-container>
-      </a>
-      <a mat-list-item routerLink="/dashboard" routerLinkActive="portal-menu--active">
-        <ng-container>
-          <mat-icon>dashboard</mat-icon>
-          <h3 style="
-        padding-top: 16px;
-        padding-left: 17px;
-    " matLine>Prices</h3>
-        </ng-container>
-      </a>
-      <a mat-list-item routerLink="/employee/manage-order" routerLinkActive="portal-menu--active">
-        <ng-container>
-          <mat-icon>dashboard</mat-icon>
-          <h3 style="
-        padding-top: 16px;
-        padding-left: 17px;
-    " matLine>Orders</h3>
-        </ng-container>
-      </a>
-      <a mat-list-item routerLink="/dashboard" routerLinkActive="portal-menu--active">
-        <ng-container>
-          <mat-icon>dashboard</mat-icon>
-          <h3 style="
-        padding-top: 16px;
-        padding-left: 17px;
-    " matLine>Contacts Us / Report a problem</h3>
-        </ng-container>
-      </a>
-      <a mat-list-item routerLink="/dashboard" routerLinkActive="portal-menu--active">
-        <ng-container>
-          <mat-icon>dashboard</mat-icon>
-          <h3 style="
-        padding-top: 16px;
-        padding-left: 17px;
-    " matLine>Refer a friend</h3>
+          <mat-icon>account_circle</mat-icon>
+          <h3 style="padding-top: 16px; padding-left: 17px" matLine>
+           Feedback
+          </h3>
         </ng-container>
       </a> -->
     </mat-nav-list>
 
-    <!-- <h3 class="portal-sidnav-menu__subheader">Pages</h3> -->
-    <mat-expansion-panel *ngIf="user.role === 0">
+    <!-- <mat-expansion-panel *ngIf="user?.role === 0">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>perm_identity</mat-icon>
@@ -226,27 +292,21 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-nav-list>
-        <!-- <a mat-list-item routerLink="/external/login" routerLinkActive="portal-menu--active">
-          <h3 matLine>Login</h3>
-        </a> -->
+   
         <a mat-list-item routerLink="/super-admin/register-laundry" routerLinkActive="portal-menu--active">
           <h3 matLine>Register Laundry</h3>
         </a>
-        <!-- <a mat-list-item routerLink="/super-admin/change-password-admin" routerLinkActive="portal-menu--active">
-          <h3 matLine>Change Password</h3>
-        </a> -->
+   
         <a mat-list-item routerLink="/super-admin/manage-laundry" routerLinkActive="portal-menu--active">
           <h3 matLine>Manage Laundry(Status)</h3>
         </a>
         <a mat-list-item routerLink="/super-admin/coupons" routerLinkActive="portal-menu--active">
           <h3 matLine>Coupons</h3>
         </a>
-        <!-- <a mat-list-item routerLink="/external/lock" routerLinkActive="portal-menu--active">
-          <h3 matLine>Lock Page</h3>
-        </a> -->
       </mat-nav-list>
     </mat-expansion-panel>
-    <mat-expansion-panel *ngIf="user.role === 1">
+
+    <mat-expansion-panel *ngIf="user?.role === 1">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>perm_identity</mat-icon>
@@ -254,9 +314,6 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-nav-list>
-        <!-- <a mat-list-item routerLink="/external/login" routerLinkActive="portal-menu--active">
-    <h3 matLine>Login</h3>
-  </a> -->
         <a mat-list-item routerLink="/admin/register-employee" routerLinkActive="portal-menu--active">
           <h3 matLine>Register Employee</h3>
         </a>
@@ -269,13 +326,9 @@
         <a mat-list-item routerLink="/admin/service-catalogue" routerLinkActive="portal-menu--active">
           <h3 matLine>Service Catlogue</h3>
         </a>
-        <!-- <a mat-list-item routerLink="/external/lock" routerLinkActive="portal-menu--active">
-    <h3 matLine>Lock Page</h3>
-  </a> -->
       </mat-nav-list>
     </mat-expansion-panel>
-
-    <mat-expansion-panel *ngIf="user.role === 2 || user.role ===1">
+    <mat-expansion-panel *ngIf="user?.role === 2 || user?.role ===1">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>perm_identity</mat-icon>
@@ -283,9 +336,6 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-nav-list>
-        <!-- <a mat-list-item routerLink="/external/login" routerLinkActive="portal-menu--active">
-    <h3 matLine>Login</h3>
-  </a> -->
         <a mat-list-item routerLink="/employee/manage-Register" routerLinkActive="portal-menu--active">
           <h3 matLine>Order Register</h3>
         </a>
@@ -298,20 +348,9 @@
         <a mat-list-item routerLink="/employee/Inventory-Add" routerLinkActive="portal-menu--active">
           <h3 matLine>Inventory Add</h3>
         </a>
-        <!-- <a mat-list-item routerLink="/pages/profile" routerLinkActive="portal-menu--active">
-          <h3 matLine>Machine management</h3>
-        </a> -->
-        <!-- <a mat-list-item routerLink="/employee/order-transit" routerLinkActive="portal-menu--active">
-          <h3 matLine>Pickup and Drop</h3>
-        </a> -->
-        <!-- <a mat-list-item routerLink="/external/lock" routerLinkActive="portal-menu--active">
-    <h3 matLine>Lock Page</h3>
-  </a> -->
       </mat-nav-list>
     </mat-expansion-panel>
-
-
-    <mat-expansion-panel *ngIf="user.role === 3">
+    <mat-expansion-panel *ngIf="user?.role === 3">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>perm_identity</mat-icon>
@@ -319,261 +358,21 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-nav-list>
-        <!-- <a mat-list-item routerLink="/external/login" routerLinkActive="portal-menu--active">
-<h3 matLine>Login</h3>
-</a> -->
-        <!-- <a mat-list-item routerLink="/customer/profile" routerLinkActive="portal-menu--active">
-          <h3 matLine>Profile</h3>
-        </a>
-        <a mat-list-item routerLink="/customer/place-order" routerLinkActive="portal-menu--active">
-          <h3 matLine>Place order</h3>
-        </a> -->
         <a mat-list-item routerLink="/customer/track-order" routerLinkActive="portal-menu--active">
           <h3 matLine>Track Order</h3>
         </a>
-        <!-- <a mat-list-item routerLink="/customer/customer-add" routerLinkActive="portal-menu--active">
-          <h3 matLine>Customer Add </h3>
-        </a> -->
         <a mat-list-item routerLink="/customer/refer" routerLinkActive="portal-menu--active">
           <h3 matLine>Refer a friend</h3>
         </a>
-        <!-- <a mat-list-item routerLink="/customer/change-pass" routerLinkActive="portal-menu--active">
-          <h3 matLine>Change Password</h3>
-        </a> -->
+
         <a mat-list-item routerLink="/customer/contact" routerLinkActive="portal-menu--active">
           <h3 matLine>Contact us/ Report a problem</h3>
         </a>
-        <!-- <a mat-list-item routerLink="/external/lock" routerLinkActive="portal-menu--active">
-<h3 matLine>Lock Page</h3>
-</a> -->
-      </mat-nav-list>
-    </mat-expansion-panel>
-    <!-- <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>error</mat-icon>
-          <h3>Errors</h3>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/external/404" routerLinkActive="portal-menu--active">
-          <h3 matLine>404</h3>
-        </a>
-        <a mat-list-item routerLink="/external/500" routerLinkActive="portal-menu--active">
-          <h3 matLine>500</h3>
-        </a>
+
       </mat-nav-list>
     </mat-expansion-panel> -->
-
-    <!-- user interface menu -->
-
-    <!-- <h3 class="portal-sidnav-menu__subheader">User Interface</h3>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/ui/typography" routerLinkActive="portal-menu--active">
-        <mat-icon matListIcon>text_format</mat-icon>
-        <h3 matLine>Typography</h3>
-      </a>
-      <a mat-list-item routerLink="/ui/colors" routerLinkActive="portal-menu--active">
-        <mat-icon matListIcon>palette</mat-icon>
-        <h3 matLine>Colors</h3>
-      </a>
-    </mat-nav-list>  -->
-
-    <!-- elements menu -->
-
-    <!-- <h3 class="portal-sidnav-menu__subheader">Elements</h3>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>extension</mat-icon>
-          <h3>Form Controls</h3>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/elements/autocomplete" routerLinkActive="portal-menu--active">
-          <h3 matLine>Autocomplete</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/checkbox" routerLinkActive="portal-menu--active">
-          <h3 matLine>Checkbox</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/datepicker" routerLinkActive="portal-menu--active">
-          <h3 matLine>Datepicker</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/form-field" routerLinkActive="portal-menu--active">
-          <h3 matLine>Form Field</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/input" routerLinkActive="portal-menu--active">
-          <h3 matLine>Input</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/radio" routerLinkActive="portal-menu--active">
-          <h3 matLine>Radio</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/select" routerLinkActive="portal-menu--active">
-          <h3 matLine>Select</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/slider" routerLinkActive="portal-menu--active">
-          <h3 matLine>Slider</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/toggle" routerLinkActive="portal-menu--active">
-          <h3 matLine>Slide Toggle</h3>
-        </a>
-      </mat-nav-list>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>menu</mat-icon>
-          <h3>Navigation</h3>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/elements/menu" routerLinkActive="portal-menu--active">
-          <h3 matLine>Menu</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/sidenav" routerLinkActive="portal-menu--active">
-          <h3 matLine>Sidenav</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/toolbar" routerLinkActive="portal-menu--active">
-          <h3 matLine>Toolbar</h3>
-        </a>
-      </mat-nav-list>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>view_module</mat-icon>
-          <h3>Layout</h3>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/elements/list" routerLinkActive="portal-menu--active">
-          <h3 matLine>List</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/grid-list" routerLinkActive="portal-menu--active">
-          <h3 matLine>Grid List</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/card" routerLinkActive="portal-menu--active">
-          <h3 matLine>Card</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/stepper" routerLinkActive="portal-menu--active">
-          <h3 matLine>Stepper</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/tabs" routerLinkActive="portal-menu--active">
-          <h3 matLine>Tabs</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/expansion-panel" routerLinkActive="portal-menu--active">
-          <h3 matLine>Expansion Panel</h3>
-        </a>
-      </mat-nav-list>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>info</mat-icon>
-          <h3>Buttons & Indicators</h3>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/elements/buttons" routerLinkActive="portal-menu--active">
-          <h3 matLine>Buttons</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/button-toggle" routerLinkActive="portal-menu--active">
-          <h3 matLine>Button Toggle</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/chips" routerLinkActive="portal-menu--active">
-          <h3 matLine>Chips</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/mat-icon" routerLinkActive="portal-menu--active">
-          <h3 matLine>Material Icons</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/fa-icon" routerLinkActive="portal-menu--active">
-          <h3 matLine>Font Awesome Icons</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/progress-spinner" routerLinkActive="portal-menu--active">
-          <h3 matLine>Progress Spinner</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/progress-bar" routerLinkActive="portal-menu--active">
-          <h3 matLine>Progress Bar</h3>
-        </a>
-      </mat-nav-list>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>feedback</mat-icon>
-          <h3>Popups & Modals</h3>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/elements/dialog" routerLinkActive="portal-menu--active">
-          <h3 matLine>Dialog</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/tooltip" routerLinkActive="portal-menu--active">
-          <h3 matLine>Tooltip</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/snackbar" routerLinkActive="portal-menu--active">
-          <h3 matLine>Snackbar</h3>
-        </a>
-      </mat-nav-list>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>reorder</mat-icon>
-          <h3>Data Table</h3>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/elements/table" routerLinkActive="portal-menu--active">
-          <h3 matLine>Table</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/sortable" routerLinkActive="portal-menu--active">
-          <h3 matLine>Sortable</h3>
-        </a>
-        <a mat-list-item routerLink="/elements/paginator" routerLinkActive="portal-menu--active">
-          <h3 matLine>Paginator</h3>
-        </a>
-      </mat-nav-list>
-    </mat-expansion-panel>  -->
-
-    <!-- examples menu -->
-
-    <!-- <h3 class="portal-sidnav-menu__subheader">Examples</h3>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>loop</mat-icon>
-          <h3 matLine>RxJS</h3>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/rxjs/intro" routerLinkActive="portal-menu--active">
-          <h3 matLine>Introduction</h3>
-        </a>
-        <a mat-list-item routerLink="/rxjs/subject" routerLinkActive="portal-menu--active">
-          <h3 matLine>Subject</h3>
-        </a>
-      </mat-nav-list>
-    </mat-expansion-panel> -->
-
-    <!-- portal menu -->
-
-    <!-- <h3 class="portal-sidnav-menu__subheader">Portal</h3>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>loop</mat-icon>
-          <h3 matLine>Portal Examples</h3>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/portal-examples/layout-service" routerLinkActive="portal-menu--active">
-          <h3 matLine>Layout Service</h3>
-        </a>
-      </mat-nav-list>
-    </mat-expansion-panel> -->
-
   </div>
+
   <mat-toolbar>
     <mat-toolbar-row fxLayout="row">
       <span fxFlex></span>

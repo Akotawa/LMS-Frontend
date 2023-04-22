@@ -42,9 +42,8 @@ export class CouponsComponent implements OnInit {
       width: "40%",
     });
     dialogRef.afterClosed().subscribe((response) => {
-      if (response && response.status == 'OK') {
+      if (response) {
         this.getDataList(); // refresh the coupon list
-        dialogRef.close(); // close the dialog
       }
     });
   }
@@ -75,13 +74,13 @@ export class CouponsComponent implements OnInit {
 
 
   deleteById(id: any){
-    this.isLoading=true;
     if (confirm("Are you sure you want to delete this coupon?")) {
+      this.isLoading=true;
       this._couponsService.deleteById(id)
-          .subscribe((response: any) => {
+          .then((response: any) => {
               if (response && response.status == 'OK') {
+                this.ngOnInit();
                   this.isLoading=false;
-                  this.ngOnInit();
                   this._utilityService.openMatSnackBar(response.message, response.status);
               } else {
                   this._utilityService.openMatSnackBar(response.message, response.status);
@@ -96,11 +95,10 @@ export class CouponsComponent implements OnInit {
 
 
   getDataList() {
-    this.isLoading=true;
     this._couponsService.getData().then((response: any) => {
       if (response && response.status === "OK") {
         this.dataSource = response.data;
-        this.isLoading=false;
+        // this.ngOnInit()
       }
     });
   }

@@ -17,6 +17,7 @@ export class UserService implements Resolve<any>{
     users: any;
     routeParams: any;
     state: string;
+  this: any;
 
     constructor(
         private _httpClient: HttpClient,
@@ -63,9 +64,21 @@ export class UserService implements Resolve<any>{
     addAdminOrSave(data: any, type: any) {
         return this._apiService.post(data, type === 'add' ? 'user/addAdmin' : 'user/updateUser');
     }
-    addOrSaveUser(data: any, type) {
-        return this._apiService.post(data, type === 'add' ? 'user/addUser' : 'user/updateUser');
-    }
+    
+
+    // addOrSaveUser(data: any,) {
+    //     return this._apiService.put('customer/update/${id}',data);
+    // }
+
+
+    addOrSaveUser(id: any, data): Promise<any> {
+    
+          return this._apiService.put(`customer/update/${id}`, data);
+      
+      }
+
+
+
     getUserList() {
         return this._apiService.get('user/getAllUser');
     }
@@ -79,7 +92,7 @@ export class UserService implements Resolve<any>{
         return this._apiService.post(json, 'user/getPlayerListByFilterWithPagination');
     }
     getUserById(id) {
-        return this._apiService.get(`user/getUser/${id}`);
+        return this._apiService.get(`get/customer/${id}`);
     }
     deleteUserById(id) {
         return this._apiService.get(`user/deleteUser/${id}`);

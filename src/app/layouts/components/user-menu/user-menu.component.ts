@@ -3,6 +3,7 @@ import { LoginService } from '../../../shared/services/login.service';
 import { MatDialog } from '@angular/material';
 import { UtilityService } from '../../../shared/services/utility.service';
 import { CustomerPasswordChangeComponent } from '../../../views/customer/customer-password-change/customer-password-change.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'portal-user-menu',
@@ -15,7 +16,8 @@ export class UserMenuComponent implements OnInit {
   constructor(
     public _loginService: LoginService,
     private _matDialog: MatDialog,
-    public _utilityService: UtilityService
+    public _utilityService: UtilityService,
+    private _route : Router
   ) { }
 
   ngOnInit(): void {
@@ -27,9 +29,16 @@ export class UserMenuComponent implements OnInit {
       width: '600px'
     });
     this.dialogRef.afterClosed().subscribe((response: any) => {
-      if (!response) {
+      if (response) {
         return;
       }
     });
   }
+
+
+  edit(element: any): void {
+    this._route.navigateByUrl('/pages/edit-profile/' + element);
+  }
 }
+
+

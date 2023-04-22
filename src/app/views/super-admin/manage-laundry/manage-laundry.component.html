@@ -3,6 +3,7 @@
     style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
   </mat-progress-spinner>
 </div>
+
 <div
   class="flex flex-col flex-auto sm:mb-18 overflow-hidden sm:overflow-y-auto page-layout carded fullwidth inner-scroll body"
 >
@@ -66,6 +67,9 @@
                 >visibility
               </mat-icon>
               View
+            </button>
+            <button mat-menu-item (click)="edit(element.id)">
+              <mat-icon>edit</mat-icon> Edit
             </button>
              <!-- <button mat-menu-item (click)="deleteById(element.id)">
             <mat-icon style="cursor: pointer; color: #000">delete
