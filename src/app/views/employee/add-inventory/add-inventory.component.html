@@ -1,0 +1,43 @@
+
+ <!-- <portal-menu-sidenav></portal-menu-sidenav> -->
+ <form [formGroup]="registerorderForm" style="padding: 50px;">
+  <h1 style="text-align: center;">Inventory Details</h1>
+  <div fxLayout="row" fxLayout.sm="column">
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>UserName</mat-label>
+      <input matInput formControlName="userName" placeholder="Enter UserName">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>ItemName</mat-label>
+      <input matInput formControlName="itemName" placeholder="Enter ItemName">
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayout.sm="column">
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="text" placeholder="Enter Email">
+    </mat-form-field>
+    <mat-form-field appearance="outline" >
+      <mat-label>ItemDescription</mat-label>
+      <input matInput formControlName="itemDescription" type="email" placeholder="Enter ItemDescription">
+    </mat-form-field>
+    </div>
+ 
+ 
+  <div fxLayout="row" fxLayout.sm="column">
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>Payment</mat-label>
+      <input matInput formControlName="payment" placeholder="Enter Payment">
+    </mat-form-field>
+  <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width ">
+    <mat-label>Quantity</mat-label>
+    <input matInput formControlName="quantity" placeholder="Enter Quantity">
+  </mat-form-field>
+ 
+  </div>
+  <mat-dialog-actions style="display: block">
+    <div style="display: center">
+      <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+    </div>
+  </mat-dialog-actions>
+</form>

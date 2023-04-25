@@ -1,0 +1,83 @@
+<mat-toolbar
+  matDialogTitle
+  class="mat-accent m-0"
+  style="background: #000; color: white"
+>
+  <mat-toolbar-row>
+    <h2 class="title">Inventory Details</h2>
+    <span class="fill-remaining-space"></span>
+    <button
+      mat-icon-button
+      (click)="matDialogRef.close()"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content>
+  <ng-container>
+    <mat-card>
+      <table style="display: flex">
+        <!-- <div class="profile">
+          <tr>
+            <td>
+              <img
+                [src]="_utilityService.getImageUrl(dataInfo.carImages, 'cab')"
+                (error)="_utilityService.onImgError($event)"
+                style="
+                  width: 120px;
+                  height: 120px;
+                  border: 4px solid;
+                  display: flex;
+                "
+              />
+            </td>
+          </tr>
+        </div> -->
+        <div
+          class="details"
+          style="display: flex; align-items: center; margin: left 15px"
+        >
+      
+          <tr>
+            <td class="heading-class">Quantity</td>
+            <td>
+              <span>{{ dataInfo.quantity }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">Payment</td>
+            <td>
+              <span>{{ dataInfo.payment }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">Item Description</td>
+            <td>
+              <span>{{ dataInfo.itemDescription }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">Email</td>
+            <td>
+              <span>{{ dataInfo.email }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">Item Name</td>
+            <td>
+              <span>{{ dataInfo.itemName }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">User Name</td>
+            <td>
+              <span>{{ dataInfo.userName }}</span>
+            </td>
+          </tr>
+        </div>
+      </table>
+    </mat-card>
+  </ng-container>
+</mat-dialog-content>
