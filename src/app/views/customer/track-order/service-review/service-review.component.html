@@ -1,0 +1,42 @@
+<mat-toolbar
+  matDialogTitle
+  class="mat-accent m-0"
+  style="background: #000; color: white"
+>
+  <mat-toolbar-row>
+    <h2 class="title">Refund/Rewash</h2>
+    <span class="fill-remaining-space"></span>
+    <button
+      mat-icon-button
+      (click)="matDialogRef.close()"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+ <form [formGroup]="registerReviewForm" style="padding: 50px;">
+  <h1 style="text-align: center;">Refund/Rewash</h1>
+  <div fxLayout="row" fxLayout.sm="column" style="gap: 10px;">
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>Query</mat-label>
+      <input matInput  formControlName="query" placeholder="Enter Query">
+    </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.sm="column" style="gap: 10px;">
+      <mat-radio-group formControlName="refundRewash">
+        <mat-radio-button value="true">Refund</mat-radio-button>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <mat-radio-button value="false">Rewash</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <br>
+    <br>
+  <mat-dialog-actions style="display: block">
+    <div style="display: center">
+      <button mat-raised-button (click)="submit(id)">Submit</button>
+    </div>
+  </mat-dialog-actions>
+</form>

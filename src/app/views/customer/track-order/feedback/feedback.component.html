@@ -1,0 +1,34 @@
+<mat-toolbar
+  matDialogTitle
+  class="mat-accent m-0"
+  style="background: #000; color: white"
+>
+  <mat-toolbar-row>
+    <h2 class="title">Add Feedback</h2>
+    <span class="fill-remaining-space"></span>
+    <button
+      mat-icon-button
+      (click)="matDialogRef.close()"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form [formGroup]="FeedbackData">
+  <mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Feedback </mat-label>
+      <input
+        matInput
+        placeholder="Enter feedback"
+        formControlName="feedback"
+      /> </mat-form-field
+    ><br />
+  </mat-dialog-content>
+  <mat-dialog-actions style="display: block">
+    <div style="display: center">
+      <button mat-raised-button color="primary" (click)="sumit()" [disabled]="FeedbackData.invalid">ADD</button>
+    </div>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,154 @@
+<div
+  class="flex flex-col flex-auto sm:mb-18 overflow-hidden sm:overflow-y-auto page-layout carded fullwidth inner-scroll body"
+>
+  <mat-card-content style="overflow: auto !important">
+    <!-- <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        [(ngModel)]="filterInput"
+        (keyup)="getDataList()"
+        placeholder="Ex. Search"
+        #input
+      />
+    </mat-form-field> -->
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- App Id Column -->
+      <ng-container matColumnDef="customerName">
+        <th mat-header-cell *matHeaderCellDef>CustomerName</th>
+        <td mat-cell *matCellDef="let element">{{ element.customerName }}</td>
+      </ng-container>
+      <!-- Full name Column -->
+      <ng-container matColumnDef="contactNumber">
+        <th mat-header-cell *matHeaderCellDef>ContactNumber</th>
+        <td mat-cell *matCellDef="let element">{{ element.contactNumber }}</td>
+      </ng-container>
+      <!-- Mobile number Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+      <!-- status Column -->
+      <!-- <ng-container matColumnDef="orderStatus">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">
+        {{element.orderStatus}}
+        </td>
+      </ng-container> -->
+      <ng-container matColumnDef="orderStatus">
+        <th mat-header-cell *matHeaderCellDef>Status {{orderStatus}}</th>
+        <td mat-cell *matCellDef="let element">
+          <p *ngIf="getStatus(element.orderStatus)==='Pending'"
+            style="background:#cd5632; color: white; display: flex; align-items: center; justify-content: center;     width: 120px;
+            height: 35px;
+            margin-top: 10px;
+            gap: 10px;
+            color: white;"
+            class="label"> <img src="../../../../assets/images/pending.png" alt="" width="20px">Pending</p>
+          <p *ngIf="element.orderStatus === 1"
+            style="background:#ffc106fd; color: white; display: flex; align-items: center; justify-content: center;     width: 120px;
+            height: 35px;
+            margin-top: 10px;
+            gap: 10px;
+            color: white;"
+            class="label"> <img src="../../../../assets/images/data.gif" alt="" width="20px">Received</p>
+
+
+          <p *ngIf="getStatus(element.orderStatus) === 'completed'"
+            style="background:green; color: black;display: flex; align-items: center; justify-content: center;     width: 120px;
+            height: 35px;
+            margin-top: 10px;
+            gap: 10px;
+            color: white;"
+            class="label"><img src="../../../../assets/images/complete.gif" alt="" width="20px">Completed</p>
+
+          <p *ngIf="getStatus(element.orderStatus) === 'delivered'"
+            style="background:greenyellow; color: black;display: flex; align-items: center; justify-content: center;     width: 120px;
+            height: 35px;
+            margin-top: 10px;
+            gap: 10px;
+            color: white;"
+            class="label"><img src="../../../../assets/images/truck.gif" alt="" width="20px">Delivered</p>
+
+          <p *ngIf="getStatus(element.orderStatus) === 'cancel'"
+            style="background:red; color: black;display: flex; align-items: center; justify-content: center;     width: 120px;
+            height: 35px;
+            margin-top: 10px;
+            gap: 10px;
+            color: white;"
+            class="label"><img src="../../../../assets/images/dlf10_CFS8Jd3PTl.gif" alt="" width="20px">Cancle</p>
+          </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>Quantity</th>
+        <td mat-cell *matCellDef="let element" >
+        {{element.quantity}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="servicereview" >
+        <th mat-header-cell *matHeaderCellDef>Service Review</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary" (click)="addServiceReview(element.id)"  [disabled]="getStatus(element.orderStatus) === 'Pending'">Refund/Rewash</button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rating" >
+        <th mat-header-cell *matHeaderCellDef>Rating</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary" (click)="addServiceRating(element.id)" [disabled]="getStatus(element.orderStatus) === 'Pending'">Rating</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="feedback">
+        <th mat-header-cell *matHeaderCellDef>Feedback</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary" (click)="addServiceFeedback(element.id)" [disabled]="getStatus(element.orderStatus) === 'Pending'">Feedback</button>
+        </td>
+      </ng-container>
+      <!-- Created at Column -->
+      <!-- <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef>Created At</th>
+        <td mat-cell *matCellDef="let element">
+          {{ _utilityService.getFormatedDateTime(element.createdAt) }}
+        </td>
+      </ng-container> -->
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="rightPadding">Actions</th>
+        <td mat-cell *matCellDef="let element" class="rightPadding">
+          <button mat-icon-button color="black" [matMenuTriggerFor]="action">
+            <mat-icon> more_vert </mat-icon>
+          </button>
+          <mat-menu #action="matMenu">
+            <mat-divider style="background-color: #000"></mat-divider>
+            <button mat-menu-item (click)="view(element.id)">
+              <mat-icon style="cursor: pointer; color: #000"
+                >visibility
+              </mat-icon>
+              View
+            </button>          
+            <mat-divider></mat-divider>
+          </mat-menu>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          No data matching the filter "{{ input.value }}"
+        </td>
+      </tr>
+    </table>
+  </mat-card-content>
+  <mat-paginator
+    [length]="pagination?.totalCount"
+    [pageIndex]="pagination?.currentPage - 1"
+    [pageSize]="pagination?.perPage"
+    [pageSizeOptions]="_constantService.PAGINATION_OPTIONS"
+    [showFirstLastButtons]="true"
+    (page)="getNextPageData($event)"
+  >
+  </mat-paginator>
+</div>

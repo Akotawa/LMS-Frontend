@@ -1,0 +1,48 @@
+<mat-toolbar
+  matDialogTitle
+  class="mat-accent m-0"
+  style="background: #000; color: white"
+>
+  <mat-toolbar-row>
+    <h2 class="title">Add Rating</h2>
+    <span class="fill-remaining-space"></span>
+    <button
+      mat-icon-button
+      (click)="matDialogRef.close()"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form [formGroup]="RatingData">
+  <mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Rating </mat-label>
+      <input
+        matInput
+        type="number"
+        placeholder="Enter Rating"
+        formControlName="rating"
+      /> </mat-form-field
+    ><br />
+  </mat-dialog-content>
+  <div *ngIf="rating.invalid && (rating.dirty || rating.touched)" class="invalid-feedback">
+    <div *ngIf="rating.errors.min || rating.errors.max">
+      <img src="../../../../../assets/images/tenor.gif" alt="" width="40px">
+      Rating must be between 1 and 5
+    </div>
+    <div *ngIf="rating.errors.invalid">
+      <img src="../../../../../assets/images/tenor.gif" alt="" width="40px">
+
+      Invalid rating
+    </div>
+  </div>
+  
+  
+  <mat-dialog-actions style="display: block">
+    <div style="display: center">
+      <button mat-raised-button color="primary" (click)="sumit()" [disabled]="RatingData.invalid">ADD</button>
+    </div>
+  </mat-dialog-actions>
+</form>

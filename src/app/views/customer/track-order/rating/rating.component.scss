@@ -1,0 +1,15 @@
+.invalid-feedback {
+    color: white;
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.975rem;
+    background-color: black;
+    width: fit-content;
+    text-transform: capitalize;
+    padding: 5px;
+  }
+  
+  .invalid-feedback > div {
+    margin-top: 0.5rem;
+  }
+  

@@ -1,0 +1,33 @@
+
+ <!-- <portal-menu-sidenav></portal-menu-sidenav> -->
+ <form [formGroup]="registerCustomerForm" style="padding: 50px; margin:20px">
+  <h1 style="text-align: center;"> Add Customer</h1>
+  <div fxLayout="row" fxLayout.sm="column">
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>email</mat-label>
+      <input matInput formControlName="email" placeholder="Enter email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
+      <mat-label>fullName</mat-label>
+      <input matInput formControlName="fullName" type="text" placeholder="Enter fullName">
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayout.sm="column">
+
+    <mat-form-field appearance="outline" >
+      <mat-label>mobileNumber</mat-label>
+      <input matInput formControlName="mobileNumber" type="text" placeholder="Enter mobileNumber">
+    </mat-form-field>
+    <mat-form-field appearance="outline" >
+      <mat-label>password</mat-label>
+      <input matInput formControlName="password" type="text" placeholder="Enter password">
+    </mat-form-field>
+    </div>
+
+  <mat-dialog-actions style="display: block">
+    <div style="display: center">
+      <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+    </div>
+  </mat-dialog-actions>
+</form>
