@@ -1,0 +1,35 @@
+<mat-toolbar
+  matDialogTitle
+  class="mat-accent m-0"
+  style="background: #000; color: white"
+>
+  <mat-toolbar-row>
+    <h2 class="title">Add User</h2>
+    <span class="fill-remaining-space"></span>
+    <button
+      mat-icon-button
+      (click)="matDialogRef.close()"
+      aria-label="Close dialog"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form [formGroup]="PriceData">
+  <mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Price </mat-label>
+      <input
+        matInput
+        type="number"
+        placeholder="Enter Price"
+        formControlName="price"
+      /> </mat-form-field
+    ><br />
+  </mat-dialog-content>
+  <mat-dialog-actions style="display: block">
+    <div style="display: center">
+      <button mat-raised-button (click)="sumit()" [disabled]="PriceData.invalid">ADD</button>
+    </div>
+  </mat-dialog-actions>
+</form>
