@@ -6,12 +6,12 @@ import { OrderTransitComponent } from './order-transit/order-transit.component';
 import { EmployeeComponent } from './employee.component';
 import { EmployeeRouting } from './employee-routing.module';
 import { InventoryManagementComponent } from './inventory-management/inventory-management.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { RegisterOrderComponent } from './register-order/register-order.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDatepickerModule, MatNativeDateModule, MatInputModule, MatFormFieldModule, MatDialogModule, MatSlideToggleModule } from '@angular/material';
 import { AddInventoryComponent } from './add-inventory/add-inventory.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { InventoryDetailsComponent } from './inventory-management/inventory-details/inventory-details.component';
+import { AssignMachineComponent } from './order-management/assign-machine/assign-machine.component';
 
 
 @NgModule({
@@ -56,9 +57,9 @@ import { InventoryDetailsComponent } from './inventory-management/inventory-deta
     MatPaginatorModule,
     MatButtonModule,
     MatSlideToggleModule,
-    
+
   ],
-  declarations: [OrderStatusComponent, OrderManagementComponent, OrderTransitComponent, EmployeeComponent, InventoryManagementComponent, RegisterOrderComponent, AddInventoryComponent, InventoryDetailsComponent,],
-  entryComponents : [OrderStatusComponent, OrderManagementComponent, OrderTransitComponent, InventoryManagementComponent,InventoryDetailsComponent],
+  declarations: [OrderStatusComponent, OrderManagementComponent, OrderTransitComponent, EmployeeComponent, InventoryManagementComponent, RegisterOrderComponent, AddInventoryComponent, InventoryDetailsComponent, AssignMachineComponent],
+  entryComponents: [OrderStatusComponent, OrderManagementComponent, OrderTransitComponent, InventoryManagementComponent, InventoryDetailsComponent, AssignMachineComponent],
 })
 export class EmployeeModule { }

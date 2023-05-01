@@ -13,14 +13,14 @@ export class SuperAdminService {
     "status",
     "action",
   ];
- 
+
   constructor(
     private _apiService: ApiService,
     private _formBuilder: FormBuilder,
-    ) { }
+  ) { }
 
   deleteById(id): Promise<any> {
-    return this._apiService.delete(`laundry/deleteUserById?id=${id}`);
+    return this._apiService.delete(`laundry/${id}/delete`);
   }
 
   acceptOrReject(id, status): any {
@@ -29,7 +29,7 @@ export class SuperAdminService {
       null
     );
   }
-  
+
 
   createRegisterForm(element: any): FormGroup {
     return this._formBuilder.group({
@@ -42,7 +42,7 @@ export class SuperAdminService {
       businessType: element ? [element.businessType] : '',
       mobileNumber: element ? [element.mobileNumber] : '',
     });
-}
+  }
 
   // getData(data): Promise<any> {
   //   return this._apiService.post(
@@ -78,7 +78,7 @@ export class SuperAdminService {
   tipDetails(id): Promise<any> {
     return this._apiService.get(`tip/getTipListByDriverId?driverId=${id}`);
   }
-  
+
   getData(): Promise<any> {
     return this._apiService.get(`laundry`);
   }
@@ -90,11 +90,11 @@ export class SuperAdminService {
   getlaundryDetails(id): Promise<any> {
     return this._apiService.get(`laundry/${id}`);
   }
-  
+
   // addOrSaveData(data): any {
   //   return this._apiService.put(`laundry/update`, data);
   // }
-  
+
 
   laundryAdd(data, id?: string): Promise<any> {
     if (id) {
@@ -106,5 +106,5 @@ export class SuperAdminService {
       return this._apiService.post("laundry/add", data);
     }
   }
-  
+
 }

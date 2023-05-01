@@ -14,59 +14,59 @@ import { RegisterLaundry } from './register-laundry.model';
 export class RegisterLaundryComponent implements OnInit {
   registerLaundryForm!: FormGroup;
   registerLaundry: RegisterLaundry = new RegisterLaundry();
-  isLoading=false;
+  isLoading = false;
   elementId: any;
-  constructor( 
+  constructor(
     private formBuilder: FormBuilder,
     private _superadminservice: SuperAdminService,
-    private _utilityService:UtilityService,
+    private _utilityService: UtilityService,
     private route: ActivatedRoute,
-    private router: Router) { 
-      this.registerLaundryForm = this._superadminservice.createRegisterForm(this.registerLaundry)
-    }
+    private router: Router) {
+    this.registerLaundryForm = this._superadminservice.createRegisterForm(this.registerLaundry)
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
 
       this.elementId = params['id'];
-      if(this.elementId){
-        this._superadminservice.getlaundryDetails(this.elementId).then((response:any)=>{
-          if(response){
-           this.registerLaundry = new RegisterLaundry(response.data)
-           this.registerLaundryForm = this._superadminservice.createRegisterForm(this.registerLaundry)
+      if (this.elementId) {
+        this._superadminservice.getlaundryDetails(this.elementId).then((response: any) => {
+          if (response) {
+            this.registerLaundry = new RegisterLaundry(response.data)
+            this.registerLaundryForm = this._superadminservice.createRegisterForm(this.registerLaundry)
 
-          }else{
-           this.registerLaundryForm = this._superadminservice.createRegisterForm(this.registerLaundry)
+          } else {
+            this.registerLaundryForm = this._superadminservice.createRegisterForm(this.registerLaundry)
           }
-       })
+        })
       }
     });
   }
 
 
 
-sumit(){
-  this.isLoading=true;
-  const data = this.registerLaundryForm.getRawValue();
-  this._superadminservice.laundryAdd(data,this.elementId).then((response: any) => {
-    this.registerLaundryForm.reset()
-    if (response && response.status == "OK") {
-      this._utilityService.openMatSnackBar(
-        response.message,
-        response.status
-      );
-      this.isLoading=false;
+  sumit() {
+    this.isLoading = true;
+    const data = this.registerLaundryForm.getRawValue();
+    this._superadminservice.laundryAdd(data, this.elementId).then((response: any) => {
+      this.isLoading = false;
+      if (response && response.status == "OK") {
+        this.registerLaundryForm.reset()
+        this._utilityService.openMatSnackBar(
+          response.message,
+          response.status
+        );
 
-    } else {
-      this._utilityService.openMatSnackBar(
-        response.message,
-        response.status
-      );
-    }
-  },
-  (error) => {
-    this._utilityService.openMatSnackBar("Internal Server error", "ERROR");
+      } else {
+        this._utilityService.openMatSnackBar(
+          response.message,
+          response.status
+        );
+      }
+    },
+      (error) => {
+        this._utilityService.openMatSnackBar("Internal Server error", "ERROR");
+      }
+    );
   }
-);
-}
 }

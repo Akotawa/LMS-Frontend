@@ -4,13 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { ConstantService } from '../../../shared/services/constants.service';
 import { UtilityService } from '../../../shared/services/utility.service';
 import { CustomerService } from '../../customer.service';
-import { laundryDetailsComponent } from '../../super-admin/manage-laundry/details/details.component';
-import { orderDetailsComponent } from '../../super-admin/manage-laundry/order-details/order-details.component';
-import { SuperAdminService } from '../../super-admin/super-admin.service';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { ServiceReviewComponent } from './service-review/service-review.component';
 import { RatingComponent } from './rating/rating.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { AdminService } from '../../admin/admin.service';
+import { AssignMachineComponent } from '../../employee/order-management/assign-machine/assign-machine.component';
 
 @Component({
   selector: 'app-track-order',
@@ -18,7 +17,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
   styleUrls: ['./track-order.component.scss']
 })
 export class TrackOrderComponent implements OnInit {
-  dataSource: any[]=[];
+  dataSource: any[] = [];
   pagination: any;
   filter: any;
   pageNumber: any = 1;
@@ -26,15 +25,16 @@ export class TrackOrderComponent implements OnInit {
   displayedColumns: string[] = [];
   sessionUser: any;
   routeSub: any;
-  
+
   constructor(
     private dialog: MatDialog,
     public _utilityService: UtilityService,
     private _customerService: CustomerService,
     public _constantService: ConstantService,
-    private routes : ActivatedRoute
+    public _adminService: AdminService,
+    private routes: ActivatedRoute
 
-  ) { 
+  ) {
     this.sessionUser = JSON.parse(localStorage.getItem("user"));
 
   }
@@ -59,7 +59,7 @@ export class TrackOrderComponent implements OnInit {
   //     disableClose: true,
   //   });
   // }
-  view(id: any): void {
+  view(id: number): void {
     this._customerService.getOrderDetails(id).then((Response: any) => {
       const dialogRef = this.dialog.open(OrderDetailsComponent, {
         width: "650px",
@@ -67,11 +67,12 @@ export class TrackOrderComponent implements OnInit {
       });
     });
   }
-  
+
   getAllList() {
     this._customerService.trackOrderList(this.sessionUser.id).then((resData: any) => {
       this.dataSource = resData.data;
-  })}
+    })
+  }
 
   getStatus(orderStatus) {
     if (orderStatus === 0) {
@@ -81,40 +82,63 @@ export class TrackOrderComponent implements OnInit {
     } else if (orderStatus === 2) {
       return "completed";
     }
-     else if (orderStatus === 3) {
+    else if (orderStatus === 3) {
       return "delivered";
     }
-     else if (orderStatus === 4) {
+    else if (orderStatus === 4) {
       return "cancel";
     }
   }
 
- 
 
-  addServiceReview(id:any){
+
+  addServiceReview(id: any) {
     const dialogRef = this.dialog.open(ServiceReviewComponent, {
       width: "700px",
       height: "430px",
       disableClose: true,
-      data:id
+      data: id
     });
   }
-  addServiceRating(id:any){
+  addServiceRating(id: any) {
     const dialogRef = this.dialog.open(RatingComponent, {
       width: "700px",
       height: "300px",
       disableClose: true,
-      data:id
+      data: id
     });
   }
-  addServiceFeedback(id:any){
+  addServiceFeedback(id: any) {
     const dialogRef = this.dialog.open(FeedbackComponent, {
       width: "700px",
       height: "300px",
       disableClose: true,
-      data:id
+      data: id
     });
   }
 
+
+
+  changeStatus(id: any, status: string, data: any) {
+    this._adminService.getOrderPicupDrop(id, status, data).then(
+      (response: any) => {
+        if (response && response.status) {
+          this._utilityService.openMatSnackBar(
+            "Status has been successfully updated",
+            "OK"
+          );
+          this.getAllList()
+
+        } else {
+          this._utilityService.openMatSnackBar(
+            response.message,
+            response.status
+          );
+        }
+      },
+      (error) => {
+      }
+    );
+  }
 
 }

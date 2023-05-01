@@ -18,7 +18,7 @@ import { LoginService } from '../../shared/services/login.service';
 export class ProfileComponent {
   formGroup: FormGroup;
   registerCustomerForm: FormGroup;
-  elementId:any
+  elementId: any
   passwordForm: FormGroup;
   notificationsForm: FormGroup;
   user: User = new User();
@@ -29,7 +29,7 @@ export class ProfileComponent {
   statefilteredOptions: Observable<string[]>;
   cityfilteredOptions: Observable<string[]>;
   loading: boolean;
-  sessionUser:any
+  sessionUser: any
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
@@ -37,7 +37,7 @@ export class ProfileComponent {
     private _createFormService: CreateFormService,
     public _utilityService: UtilityService,
     private route: ActivatedRoute,
-    private _loginService:LoginService,
+    private _loginService: LoginService,
 
 
   ) {
@@ -51,7 +51,7 @@ export class ProfileComponent {
       this.elementId = params['id'];
       console.log(this.elementId);
     });
-  
+
     if (this.elementId) {
       this._userService.getUserById(this.elementId).then((response: any) => {
         if (response) {
@@ -67,10 +67,6 @@ export class ProfileComponent {
       this.formGroup = this._createFormService.createUserForm(this.user);
     }
   }
-  
-
-
-
 
   showSnackbar(): void {
     this.snackBar.open('Settings Updated', '', {
@@ -80,25 +76,23 @@ export class ProfileComponent {
 
   update() {
     const data = this.formGroup.getRawValue();
-    let apiData={
+    let apiData = {
       "email": data.email,
       "fullName": data.fullName,
-      "homeAddress": data.fullName,
+      "homeAddress": data.homeAddress,
       "mobileNumber": data.mobileNumber,
-      "password": data.password,
       "profileImage": "null"
     }
     const id = this.formGroup.get('id').value;
-     data.id = this.sessionUser.id;
+    data.id = this.sessionUser.id;
     console.log('cutomerid value', id);
     this.loading = true;
-    this._userService.addOrSaveUser(this.sessionUser.id,apiData).then((response: any) => {
+    this._userService.addOrSaveUser(this.sessionUser.id, apiData).then((response: any) => {
       this.loading = false;
-      this.formGroup.reset()
+      // this.formGroup.reset()
       if (response && response.status === 'OK') {
         this._utilityService.openMatSnackBar(response.message, response.status);
-        this._loginService.logout()
-
+        //this._loginService.logout()
       } else {
         this._utilityService.openMatSnackBar(response.message, response.status);
       }

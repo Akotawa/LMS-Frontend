@@ -1,37 +1,14 @@
-
- <!-- <portal-menu-sidenav></portal-menu-sidenav> -->
+<!-- 
  <form [formGroup]="registerorderForm" style="padding: 50px;">
   <h1 style="text-align: center;">Order Details</h1>
   <div fxLayout="row" fxLayout.sm="column" style="gap: 10px;">
     <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
-      <mat-label>ContactNumber</mat-label>
-      <input matInput type="number" formControlName="contactNumber" placeholder="Enter ContactNumber">
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
-      <mat-label>CustomerName</mat-label>
-      <input matInput formControlName="customerName" placeholder="Enter CustomerName">
-    </mat-form-field>
-  </div>
-  <div fxLayout="row" fxLayout.sm="column" style="gap: 10px;">
-    <!-- <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
-      <mat-label>OrderStatus</mat-label>
-      <input matInput formControlName="orderStatus" type="text" placeholder="Enter OrderStatus">
-    </mat-form-field> -->
-    <mat-form-field appearance="outline" >
-      <mat-label>Email Address</mat-label>
-      <input matInput formControlName="email" type="email" placeholder="Enter Email Address">
-    </mat-form-field>
-    </div>
- 
- 
-  <div fxLayout="row" fxLayout.sm="column" style="gap: 10px;">
-    <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
       <mat-label>Quantity</mat-label>
-      <input matInput formControlName="quantity" placeholder="Enter Quantity">
+      <input matInput formControlName="serviceIdWithQuantity" placeholder="Enter Quantity">
     </mat-form-field>
     <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width">
       <mat-label>Service</mat-label>
-      <mat-select formControlName="serviceId" placeholder="Select ServiceType">
+      <mat-select formControlName="serviceIdWithQuantity" placeholder="Select ServiceType">
         <mat-option *ngFor="let service of services" [value]="service.serviceId">
           {{ service.serviceName }}  
           {{ service.laundryName }}
@@ -40,13 +17,64 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <mat-form-field appearance="outline" class="portal-remove-fixed-infix-width portal-first-name">
-    <mat-label>Payment</mat-label>
-    <input matInput formControlName="payment" placeholder="Enter Payment">
-  </mat-form-field>
   <mat-dialog-actions style="display: block">
     <div style="display: center">
       <button mat-raised-button  color="primary" (click)="submit()">Submit</button>
     </div>
   </mat-dialog-actions>
+</form> -->
+<form [formGroup]="registerorderForm" style="padding: 10px;">
+  <div fxLayout="row" fxLayout.sm="column" style="gap: 10px;">
+    <mat-form-field appearance="outline"
+      class="portal-remove-fixed-infix-width">
+      <mat-label>Laundry</mat-label>
+      <mat-select formControlName="laundryId" placeholder="Select laundry"
+        (selectionChange)="onSelectionChange($event.value)">
+        <mat-option *ngFor="let service of laundryList" [value]="service.id">
+          {{ service.companyName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div style="text-align:right"><button mat-raised-button color="primary"
+      (click)="onAddSkills()">Add More</button></div>
+  <ng-container formArrayName="serviceIdWithQuantity">
+    <div *ngFor="let item of
+      registerorderForm.get('serviceIdWithQuantity').controls; let i= index"
+      class="style">
+      <ng-container [formGroup]="item">
+        <mat-form-field appearance="outline"
+          class="portal-remove-fixed-infix-width">
+          <mat-label>Service</mat-label>
+          <mat-select formControlName="serviceId" placeholder="Select
+            ServiceType" (selectionChange)="onSelectionChangeService(i,item)">
+            <mat-option *ngFor="let service of services"
+              [value]="service.id">
+              {{ service.serviceName }}
+              ({{ service.price }})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline"
+          class="portal-remove-fixed-infix-width portal-first-name">
+          <mat-label>Quantity</mat-label>
+          <input matInput type="number" formControlName="quantity"
+            placeholder="Enter
+            Quantity" (change)="onSelectionChangeQuantity(i,item)">
+        </mat-form-field>
+        <mat-form-field appearance="outline"
+          class="portal-remove-fixed-infix-width portal-first-name">
+          <mat-label>Sub Total</mat-label>
+          <input matInput formControlName="payment" placeholder="Enter
+            Payment" readonly>
+        </mat-form-field>
+      </ng-container>
+
+    </div>
+    <div class="btn">
+      <button mat-raised-button color="primary" (click)="submit()"
+        [disabled]="registerorderForm.invalid">Submit</button>
+    </div>
+  </ng-container>
+
 </form>

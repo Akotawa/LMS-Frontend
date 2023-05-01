@@ -1,16 +1,14 @@
 <mat-toolbar
   matDialogTitle
   class="mat-accent m-0"
-  style="background: #000; color: white"
->
+  style="background: #000; color: white">
   <mat-toolbar-row>
     <h2 class="title">laundry Details</h2>
     <span class="fill-remaining-space"></span>
     <button
       mat-icon-button
       (click)="matDialogRef.close()"
-      aria-label="Close dialog"
-    >
+      aria-label="Close dialog">
       <mat-icon>close</mat-icon>
     </button>
   </mat-toolbar-row>
@@ -37,20 +35,19 @@
         </div> -->
         <div
           class="details"
-          style="display: flex; align-items: center; margin: left 15px"
-        >
-        <tr>
-          <td class="heading-class">First Name</td>
-          <td>
-            <span>{{ dataInfo.firstName }}</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="heading-class">last Name</td>
-          <td>
-            <span>{{ dataInfo.lastName }}</span>
-          </td>
-        </tr>
+          style="display: flex; align-items: center; margin: left 15px">
+          <tr>
+            <td class="heading-class">First Name</td>
+            <td>
+              <span>{{ dataInfo.firstName }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">last Name</td>
+            <td>
+              <span>{{ dataInfo.lastName }}</span>
+            </td>
+          </tr>
           <tr>
             <td class="heading-class">Company Name</td>
             <td>
@@ -87,12 +84,12 @@
               <span>{{ dataInfo.email }}</span>
             </td>
           </tr>
-          <tr>
+          <!-- <tr>
             <td class="heading-class">Company Mail</td>
             <td>
               <span>{{ dataInfo.companyMail }}</span>
             </td>
-          </tr>
+          </tr> -->
         </div>
       </table>
     </mat-card>

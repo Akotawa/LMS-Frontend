@@ -4,16 +4,14 @@
 <mat-toolbar
   matDialogTitle
   class="mat-accent m-0"
-  style="background: #000; color: white"
->
+  style="background: #000; color: white">
   <mat-toolbar-row>
     <h2 class="title">Track Details</h2>
     <span class="fill-remaining-space"></span>
     <button
       mat-icon-button
       (click)="matDialogRef.close()"
-      aria-label="Close dialog"
-    >
+      aria-label="Close dialog">
       <mat-icon>close</mat-icon>
     </button>
   </mat-toolbar-row>
@@ -40,55 +38,58 @@
         </div> -->
         <div
           class="details"
-          style="display: flex; align-items: center; margin: left 15px"
-        >
-        <tr>
-          <td class="heading-class">Contact Number</td>
-          <td>
-            <span>{{ dataInfo.order.contactNumber }}</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="heading-class">Customer Id</td>
-          <td>
-            <span>{{ dataInfo.order.customerId }}</span>
-          </td>
-        </tr>
+          style="display: flex; align-items: center; margin: left 15px">
+          <tr>
+            <td class="heading-class">Contact Number</td>
+            <td>
+              <span>{{ dataInfo.orderResponseDto.mobileNumber }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="heading-class">Customer Id</td>
+            <td>
+              <span>{{ dataInfo.orderResponseDto.customerId }}</span>
+            </td>
+          </tr>
           <tr>
             <td class="heading-class">Email</td>
             <td>
-              <span>{{dataInfo.order.email }}</span>
+              <span>{{dataInfo.orderResponseDto.email }}</span>
             </td>
           </tr>
           <tr>
             <td class="heading-class">Customer Name</td>
             <td>
-              <span>{{ dataInfo.order.customerName }}</span>
+              <span>{{ dataInfo.orderResponseDto.fullName }}</span>
             </td>
           </tr>
           <tr>
             <td class="heading-class">Order Status</td>
             <td>
-              <span>{{ dataInfo.order.orderStatus }}</span>
+              <span>{{ dataInfo.orderResponseDto.orderStatus }}</span>
             </td>
-            
+
           </tr>
           <tr>
             <td class="heading-class">Quantity</td>
             <td>
-              <span>{{ dataInfo.order.quantity }}</span>
+              <span>{{ dataInfo.orderResponseDto.quantity }}</span>
             </td>
           </tr>
           <tr>
             <td class="heading-class">Completion Date</td>
             <td>
-              <span>{{ dataInfo.order.completionDate }}</span>
+              <span>{{
+                _utilityService.getFormatedDateTime(dataInfo.orderResponseDto.completionDate)
+                }}</span>
             </td>
           </tr>
           <tr>
             <td class="heading-class">Received Date</td>
             <td>
-              <span>{{ dataInfo.order.receivedDate }}</span>
+              <span>{{
+                _utilityService.getFormatedDateTime(dataInfo.orderResponseDto.receivedDate)
+                }}</span>
             </td>
           </tr>
           <tr>
@@ -103,26 +104,9 @@
               <span>{{ dataInfo.feedback.feedback }}</span>
             </td>
           </tr>
-       
+
         </div>
       </table>
     </mat-card>
-    <!-- <mat-card>
-          <table  *ngFor="let data of dataSource">
-            <tr style="height:30px; border-bottom: 1px solid #333;">
-              <th>Rating</th>
-              <td> {{ data.rating }}</td>
-            </tr>
-      </table>
-    </mat-card>
-    <mat-card>
-          <table  *ngFor="let data of dataSource">
-            <tr style="height:30px; border-bottom: 1px solid #333;">
-              <th>feedback</th>
-
-              <td> {{ data.feedback }}</td>
-            </tr>
-      </table>
-    </mat-card> -->
   </ng-container>
 </mat-dialog-content>

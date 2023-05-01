@@ -37,7 +37,7 @@ export class UserMenuComponent implements OnInit {
 
 
   edit(element: any): void {
-    this._route.navigateByUrl('/pages/edit-profile/' + element);
+    this._route.navigateByUrl('/pages/edit-profile/' + this.user.id);
   }
 }
 

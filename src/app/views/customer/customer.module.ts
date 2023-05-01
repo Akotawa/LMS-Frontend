@@ -9,7 +9,7 @@ import { CustomerComponent } from './customer.component';
 import { SharedMaterialModule } from '../../shared/shared-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule, MatNativeDateModule, MatInputModule, MatFormFieldModule, MatDialogModule, MatSlideToggleModule } from '@angular/material';
 import { LayoutsModule } from '../../layouts/layouts.module';
 import { SharedComponentsModule } from '../../shared/shared-components/shared-components.module';
@@ -17,9 +17,10 @@ import { OrderDetailsComponent } from './track-order/order-details/order-details
 import { ReferFriendComponent } from './refer-friend/refer-friend.component';
 import { CustomerAddComponent } from './customer-add/customer-add.component';
 import { ServiceReviewComponent } from './track-order/service-review/service-review.component';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { RatingComponent } from './track-order/rating/rating.component';
 import { FeedbackComponent } from './track-order/feedback/feedback.component';
+import { AssignMachineComponent } from '../employee/order-management/assign-machine/assign-machine.component';
 
 @NgModule({
   imports: [
@@ -41,6 +42,6 @@ import { FeedbackComponent } from './track-order/feedback/feedback.component';
     MatRadioModule
   ],
   declarations: [ProfileComponent, PlaceOrderComponent, TrackOrderComponent, ReferFriendComponent, ContactUsComponent, CustomerComponent, OrderDetailsComponent, CustomerAddComponent, ServiceReviewComponent, FeedbackComponent, RatingComponent],
-  entryComponents: [ProfileComponent, PlaceOrderComponent, TrackOrderComponent, ReferFriendComponent, ContactUsComponent, OrderDetailsComponent,ServiceReviewComponent,RatingComponent,FeedbackComponent]
+  entryComponents: [ProfileComponent, PlaceOrderComponent, TrackOrderComponent, ReferFriendComponent, ContactUsComponent, OrderDetailsComponent, ServiceReviewComponent, RatingComponent, FeedbackComponent]
 })
 export class CustomerModule { }

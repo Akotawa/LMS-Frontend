@@ -6,6 +6,7 @@ import { ApiService } from "../../shared/services/api.service";
   providedIn: "root",
 })
 export class AdminService {
+
   displayedColumns: string[] = [
     "firstName",
     "email",
@@ -22,33 +23,31 @@ export class AdminService {
   //   "role",
   //   "action",
   // ];
-  constructor(private _apiService: ApiService,    private _formBuilder: FormBuilder,
-    ) { }
+  constructor(private _apiService: ApiService, private _formBuilder: FormBuilder,
+  ) { }
 
 
 
   createRegisterForm(element: any): FormGroup {
     return this._formBuilder.group({
-      userName: element ? [element.userName] : '',
       itemName: element ? [element.itemName] : '',
-      email: element ? [element.email] : '',
       itemDescription: element ? [element.itemDescription] : '',
-      payment: element ? [element.payment] : '',
-      quantity: element ? [element.quantity] : '',
-   
+      quantity: element ? [element.quantity] : ''
     });
-}
-createCustumerForm(element: any): FormGroup {
+  }
+  createCustumerForm(element: any): FormGroup {
     return this._formBuilder.group({
       fullName: element ? [element.fullName] : '',
       email: element ? [element.email] : '',
       mobileNumber: element ? [element.mobileNumber] : '',
       password: element ? [element.password] : '',
-   
+
     });
-}
+  }
 
-
+  getAllLaundry() {
+    return this._apiService.get(`laundry`);
+  }
 
 
 
@@ -86,7 +85,7 @@ createCustumerForm(element: any): FormGroup {
     );
   }
 
-  statusUser(id, active) {  
+  statusUser(id, active) {
     return this._apiService.put(
       `orderPaymentStatus/update/${id}/${active}`,
       null
@@ -138,21 +137,25 @@ createCustumerForm(element: any): FormGroup {
     return this._apiService.post(`file/uploadFile?fileName=${fileName}`, formData)
   }
 
-  
-  serviceList(id:any): Promise<any> {
+
+  serviceList(id: any): Promise<any> {
     return this._apiService.get(
       `service/getByLaundryId?laundryId=${id}`
     );
   }
 
-  getOrderPicupDrop(id: number, status: string,data:any): Promise<any> {
-    return this._apiService.post(`order/${id}/${status}/statusUpdate`,data);
+  getOrderPicupDrop(id: number, status: string, data: any): Promise<any> {
+    return this._apiService.post(`cancel/order/${id}`, data);
+  }
+
+  updateOrderStatus(id: number, status: string): Promise<any> {
+    return this._apiService.post(`order/${id}/${status}/statusUpdate`, null);
   }
 
   getEmployeDetails(id): Promise<any> {
-  return this._apiService.get(`employee/get/${id}`);
+    return this._apiService.get(`employee/get/${id}`);
   }
-  
+
   // laundryService(id): Promise<any> {
   // return this._apiService.get(`Service/${id}`);
   // }
@@ -161,7 +164,7 @@ createCustumerForm(element: any): FormGroup {
     return this._apiService.get(`service/get`);
   }
 
-  getPriceListByLaundryId(id:any) {
+  getPriceListByLaundryId(id: any) {
     return this._apiService.get(`get/Price/${id}`);
   }
 
@@ -184,9 +187,17 @@ createCustumerForm(element: any): FormGroup {
     }
   }
 
+  getActiveInventory() {
+    return this._apiService.get(`Inventory/getAvailable`);
+  }
+
 
   customerAdd(data): Promise<any> {
     return this._apiService.post("customer/add", data);
+  }
+
+  laundryMachineAssing(data: any) {
+    return this._apiService.post("add/LaundryMachineAssing", data);
   }
 
   // getCustumerDetails(id): Promise<any> {

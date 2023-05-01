@@ -79,7 +79,7 @@ changePassword() {
       );
       this.matDialogRef.close(true);
 
-      this._loginService.logout()
+     // this._loginService.logout()
     } else {
       this._utilityService.openMatSnackBar(
         response.message,

@@ -4,6 +4,7 @@ import { UtilityService } from '../../../../shared/services/utility.service';
 import { laundryDetailsComponent } from '../../../super-admin/manage-laundry/details/details.component';
 import { CustomerService } from '../../../customer.service';
 import { orderDetailsComponent } from '../../../super-admin/manage-laundry/order-details/order-details.component';
+import { AdminService } from '../../../admin/admin.service';
 
 @Component({
   selector: 'app-order-details',
@@ -22,29 +23,31 @@ export class OrderDetailsComponent implements OnInit {
   public matDialogRef: MatDialogRef<orderDetailsComponent>,
   public _utilityService: UtilityService,
   public _custumerService: CustomerService,
+  public _adminService: AdminService,
   private dialog: MatDialog,) {
+
     this.sessionUser = JSON.parse(localStorage.getItem("user"));
     this.dataInfo = _data;
 
    }
 
   ngOnInit() {
-    // this.getDataList()
+    this.getDataList()
     // this.getDataListFeedback()
   }
 
 
 
-  // getDataList() {
-  //   this._custumerService.getData(this.sessionUser.id).then((response: any) => {
-  //     this.dataSource = response.data;
-
-  //   });
-  // }
+  getDataList() {
+    this._custumerService.getData(this.sessionUser.id).then((response: any) => {
+      this.dataSource = response.data;
+    });
+  }
   // getDataListFeedback() {
   //   this._custumerService.getDataFeedback(this.sessionUser.id).then((response: any) => {
   //     this.dataSource = response.data;
 
   //   });
   // }
+
 }

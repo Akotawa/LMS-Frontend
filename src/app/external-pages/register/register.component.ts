@@ -12,7 +12,7 @@ import { registerCustumer } from './register-custumer-model';
 })
 export class RegisterComponent implements OnInit {
   registerCustomerForm: FormGroup;
-  elementId:any
+  elementId: any
   // registerCustumer: registerCustumer = new registerCustumer();
 
   constructor(
@@ -61,8 +61,8 @@ export class RegisterComponent implements OnInit {
     const data = this.registerCustomerForm.getRawValue();
     this._adminService.customerAdd(data).then(
       (response: any) => {
-        this.registerCustomerForm.reset()
         if (response && response.status == "OK") {
+          this.registerCustomerForm.reset()
           this._utilityService.openMatSnackBar(
             response.message,
             response.status

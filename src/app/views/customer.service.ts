@@ -6,11 +6,10 @@ import { ApiService } from '../shared/services/api.service';
 })
 export class CustomerService {
   displayedColumns: string[] = [
-    "customerName",
-    "contactNumber",
+    "fullName",
+    "mobileNumber",
     "email",
     "orderStatus",
-    "quantity",
     "servicereview",
     "rating",
     "feedback",
@@ -30,45 +29,49 @@ export class CustomerService {
     const url = `customer/forgotPassword/${encodeURIComponent(email)}`;
     return this._apiService.post(url, data);
   }
-  
+
 
   trackOrder(orderId: any): Promise<any> {
     const url = `customer/order/${orderId}`;
-    return this._apiService.post(url,orderId);
+    return this._apiService.post(url, orderId);
   }
 
-  trackOrderList(id:any): Promise<any> {
+  trackOrderList(id: any): Promise<any> {
     return this._apiService.get(
       `customer/order/${id}`
     );
   }
-  getFeedback(id:any): Promise<any> {
+  getFeedback(id: any): Promise<any> {
     return this._apiService.get(
-  `laundry/${id}/feedbacks`
+      `laundry/${id}/feedbacks`
     );
   }
-  
+
   changePassword(id: string, password: string, data): Promise<any> {
     return this._apiService.put(`password/update/${password}`, data);
   }
 
   refundRewash(data): Promise<any> {
-    return this._apiService.post(`add/serviceReview`,data);
+    return this._apiService.post(`add/serviceReview`, data);
   }
-  
+
   addFeedback(data): Promise<any> {
-    return this._apiService.post(`feedback/add`,data);
+    return this._apiService.post(`feedback/add`, data);
   }
-  
-  getData(id:any): Promise<any> {
+
+  machineAssing(data): Promise<any> {
+    return this._apiService.post(`add/LaundryMachineAssing`, data);
+  }
+
+  getData(id: any): Promise<any> {
     return this._apiService.get(`ratings/get/${id}`);
   }
 
-  getDataFeedback(id:any): Promise<any> {
+  getDataFeedback(id: any): Promise<any> {
     return this._apiService.get(`feedbacks/laundry/${id}`);
   }
 
-  getOrderDetails(id:any): Promise<any> {
+  getOrderDetails(id: any): Promise<any> {
     return this._apiService.get(`get/order/${id}`);
   }
 

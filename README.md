@@ -1,4 +1,51 @@
-# Portal Angular
+# laundry management system
+
+This is a Laundry Management System which allows Customers to sign up and request laundry services. Customers can view the status of their laundry request, check the price of the laundry, give feedback about the services, and logout from their account.
+
+There are multiple type of users with respective previlages. <br>
+
+#User Roles
+
+SuperAdmin<br>
+
+Superadmin is the main authority in this system who has the access to manage the laundries, accounts and dashboard<br>
+
+Admin<br>
+
+Admin is a laundry owner, who can manage employees and can handle laundry request and billing. <br>
+
+Employee<br>
+
+There are two type of employee i. Manager ii. executive. <br>
+Manager is responsible for the orders and quality. <br>
+Executives are responsible for the pickup and deliver. <br>
+
+Customer<br> 
+
+Customer is the end use who will consume the services. <br>
+
+
+# Features
+User Signup/Register<br>
+Dashboard to view the status of the laundry request and price of the laundry, give feedback about services, and logout from the account.<br>
+Laundry Request form to fill the laundry details<br>
+Forgot Password feature to change the password<br>
+Email Notification section to get the email notification once the request is confirmed<br>
+
+# Technologies Used
+HTML<br>
+CSS<br>
+Angular<br>
+TypeScript<br>
+
+# How to Use
+Clone the repository to your local machine <br>
+Install node js latest version <br>
+run command `npm install`
+run command `ng serve`
+open `localhost:4200` in browser
+
+# Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 

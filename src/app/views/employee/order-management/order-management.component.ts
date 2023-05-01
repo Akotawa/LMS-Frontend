@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { ConstantService } from '../../../shared/services/constants.service';
 import { UtilityService } from '../../../shared/services/utility.service';
 import { AdminService } from '../../admin/admin.service';
+import { AssignMachineComponent } from './assign-machine/assign-machine.component';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -18,14 +19,13 @@ const ELEMENT_DATA: PeriodicElement[] = [];
   styleUrls: ['./order-management.component.scss']
 })
 export class OrderManagementComponent implements OnInit {
-  displayedColumns: string[] = ['customerName', 'contactNumber', 'email', 'quantity','orderStatus','paymentStatus'];
+  displayedColumns: string[] = ['fullName', 'mobileNumber', 'email', 'orderStatus', 'paymentStatus', 'assignMachine'];
   dataSource = ELEMENT_DATA;
   pagination: any;
   pageNumber: any = 1;
   isLoading = false;
 
-
-  constructor(    private dialog: MatDialog,
+  constructor(private dialog: MatDialog,
     public _utilityService: UtilityService,
     private _adminService: AdminService,
     public _constantService: ConstantService,) { }
@@ -49,17 +49,14 @@ export class OrderManagementComponent implements OnInit {
     } else if (orderStatus === 2) {
       return "completed";
     }
-     else if (orderStatus === 3) {
+    else if (orderStatus === 3) {
       return "delivered";
     }
-     else if (orderStatus === 4) {
+    else if (orderStatus === 4) {
       return "cancel";
     }
   }
-
-
-
-  changeStatus(id: any, status: string, data: any) {
+  cancelOrder(id: any, status: string, data: any) {
     this.isLoading = true;
     this._adminService.getOrderPicupDrop(id, status, data).then(
       (response: any) => {
@@ -83,14 +80,39 @@ export class OrderManagementComponent implements OnInit {
       }
     );
   }
-  
+
+  changeStatus(id: any, status: string) {
+    this.isLoading = true;
+    this._adminService.updateOrderStatus(id, status).then(
+      (response: any) => {
+        if (response && response.status) {
+          this._utilityService.openMatSnackBar(
+            "Status has been successfully updated",
+            "OK"
+          );
+          this.isLoading = false;
+          this.getOrderList();
+        } else {
+          this._utilityService.openMatSnackBar(
+            response.message,
+            response.status
+          );
+          this.isLoading = false;
+        }
+      },
+      (error) => {
+        this.isLoading = false;
+      }
+    );
+  }
+
   setStatus(id, event) {
-    this.isLoading=true;
+    this.isLoading = true;
     console.log(">> inside toogle", event);
     this._adminService.statusUser(id, event.checked).then((response: any) => {
       this._utilityService.openMatSnackBar(response.message, response.status);
       console.log(">>> Response is ", response);
-      this.isLoading=false;
+      this.isLoading = false;
     });
   }
 
@@ -101,5 +123,20 @@ export class OrderManagementComponent implements OnInit {
         this.dataSource = response.data;
       }
     });
+  }
+
+  assignMachine(orderId) {
+    const dialogRef = this.dialog.open(AssignMachineComponent, {
+      width: "400px",
+      height: "400px",
+      disableClose: true,
+      data: orderId
+    });
+
+    dialogRef.afterClosed().subscribe((response: any) => {
+      if (response) {
+        this.getOrderList();
+      }
+    })
   }
 }

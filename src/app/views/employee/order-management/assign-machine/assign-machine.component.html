@@ -3,7 +3,7 @@
   class="mat-accent m-0"
   style="background: #000; color: white">
   <mat-toolbar-row>
-    <h2 class="title">Add Feedback</h2>
+    <h2 class="title">Assign Machine</h2>
     <span class="fill-remaining-space"></span>
     <button
       mat-icon-button
@@ -13,20 +13,26 @@
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
-<form [formGroup]="FeedbackData">
+<form [formGroup]="formGroup">
   <mat-dialog-content>
-    <mat-form-field appearance="outline">
-      <mat-label>Feedback </mat-label>
-      <input
-        matInput
-        placeholder="Enter feedback"
-        formControlName="feedback"
-        /> </mat-form-field><br />
+    <mat-form-field appearance="outline"
+      class="portal-remove-fixed-infix-width">
+      <mat-label>Machine</mat-label>
+      <mat-select formControlName="laundryMachineAssignmentId"
+        placeholder="Select
+        ServiceType">
+        <mat-option *ngFor="let service of machineList"
+          [value]="service.id">
+          {{ service.itemName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
   </mat-dialog-content>
   <mat-dialog-actions style="display: block">
     <div style="display: center">
       <button mat-raised-button color="primary" (click)="sumit()"
-        [disabled]="FeedbackData.invalid">ADD</button>
+        [disabled]="formGroup.invalid">ADD</button>
     </div>
   </mat-dialog-actions>
 </form>
