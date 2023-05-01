@@ -40,13 +40,16 @@ export class DashboardComponent implements OnInit {
   pagination: any;
   filter: any;
   pageNumber: any = 1;
+  sessionUser: any;
 
   constructor(
     public dialog: MatDialog,
     private _dashboardService: DashboardService,
     public _utilityService: UtilityService,
     public _constantService: ConstantService
-  ) {}
+  ) {
+    this.sessionUser = JSON.parse(localStorage.getItem("user"));
+  }
 
   ngOnInit(): void {
     this.getDataList()

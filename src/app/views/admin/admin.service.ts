@@ -11,6 +11,7 @@ export class AdminService {
     "firstName",
     "email",
     "mobileNumber",
+    "userType",
     "city",
     "country",
     "action"

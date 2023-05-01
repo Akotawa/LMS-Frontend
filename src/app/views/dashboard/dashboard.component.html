@@ -1,47 +1,101 @@
 <div class="portal-dashboard-page-wrapper">
   <div fxLayout="column" fxLayout.lg="row" fxLayoutGap="16px">
-    <div class="portal-widget" fxFlex="1 0 auto" fxFlex.lg="50">
+    <div class="portal-widget" fxFlex="1 0 auto" fxFlex.lg="50"
+      *ngIf="sessionUser.role === 0">
       <mat-card style="display: flex">
         <img
           src="../../../assets/images/clipboard.png"
           alt=""
           style="width: 60px"
-        />
+          />
         <div style="margin-left: 10px">
           <mat-card-title>
-           {{ dataSource?.totalOrder }}
+            {{ dataSource?.totalAdmin }}
+
+          </mat-card-title>
+          <mat-card-subtitle>Total Admin</mat-card-subtitle>
+        </div>
+      </mat-card>
+    </div>
+    <div class="portal-widget" fxFlex="1 0 auto" fxFlex.lg="50"
+      *ngIf="sessionUser.role === 0">
+      <mat-card style="display: flex">
+        <img
+          src="../../../assets/images/clipboard.png"
+          alt=""
+          style="width: 60px"
+          />
+        <div style="margin-left: 10px">
+          <mat-card-title>
+            {{ dataSource?.totalCustomer }}
+
+          </mat-card-title>
+          <mat-card-subtitle>Total Customer</mat-card-subtitle>
+        </div>
+      </mat-card>
+    </div>
+    <div class="portal-widget" fxFlex="1 0 auto" fxFlex.lg="50"
+      *ngIf="sessionUser.role === 0">
+      <mat-card style="display: flex">
+        <img
+          src="../../../assets/images/clipboard.png"
+          alt=""
+          style="width: 60px"
+          />
+        <div style="margin-left: 10px">
+          <mat-card-title>
+            {{ dataSource?.totalEmployee }}
+
+          </mat-card-title>
+          <mat-card-subtitle>Total Employee</mat-card-subtitle>
+        </div>
+      </mat-card>
+    </div>
+    <div class="portal-widget" fxFlex="1 0 auto" fxFlex.lg="50"
+      *ngIf="sessionUser.role === 1 || sessionUser.role === 2">
+      <mat-card style="display: flex">
+        <img
+          src="../../../assets/images/clipboard.png"
+          alt=""
+          style="width: 60px"
+          />
+        <div style="margin-left: 10px">
+          <mat-card-title>
+            {{ dataSource?.totalOrder }}
 
           </mat-card-title>
           <mat-card-subtitle>Total Orders</mat-card-subtitle>
         </div>
       </mat-card>
     </div>
-    <div class="portal-widget" fxFlex="1 0 auto" fxFlex.lg="50">
+    <div class="portal-widget" fxFlex="1 0 auto" fxFlex.lg="50"
+      *ngIf="sessionUser.role === 1 || sessionUser.role === 2">
       <mat-card style="display: flex">
         <img
           src="../../../assets/images/complete.gif"
           alt=""
           style="width: 60px"
-        />
+          />
         <div style="margin-left: 10px">
           <mat-card-title>
-          {{ dataSource?.totalReceivedOrder }}
+            {{ dataSource?.totalCompletedOrder }}
 
           </mat-card-title>
           <mat-card-subtitle> Completed Orders</mat-card-subtitle>
         </div>
       </mat-card>
     </div>
-    <div class="portal-widget" fxFlex="1 0 auto" fxFlex.lg="50">
+    <div class="portal-widget" fxFlex="1 0 auto" fxFlex.lg="50"
+      *ngIf="sessionUser.role === 1 || sessionUser.role === 2">
       <mat-card style="display: flex">
         <img
           src="../../../assets/images/pending.png"
           alt=""
           style="width: 60px"
-        />
+          />
         <div style="margin-left: 10px">
           <mat-card-title>
-  
+
             {{ dataSource?.totalPendingOrder }}
 
           </mat-card-title>
@@ -50,5 +104,5 @@
       </mat-card>
     </div>
   </div>
-<br>
+  <br>
 </div>

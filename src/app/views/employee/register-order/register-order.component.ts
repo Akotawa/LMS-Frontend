@@ -49,6 +49,11 @@ export class RegisterOrderComponent implements OnInit {
     }))
   }
 
+  removeService(index) {
+    let list = (<FormArray>this.registerorderForm.get('serviceIdWithQuantity'));
+    list.removeAt(index);
+  }
+
   onSelectionChangeService(index, formGroup) {
     let service: any = this.services.find((item: any) => item.id === formGroup.controls.serviceId.value);
     formGroup.controls.payment.setValue(service.price * formGroup.controls.quantity.value);

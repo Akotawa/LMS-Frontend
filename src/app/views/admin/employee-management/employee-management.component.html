@@ -23,6 +23,10 @@
         <th mat-header-cell *matHeaderCellDef>Mobile Number</th>
         <td mat-cell *matCellDef="let element">{{ element.mobileNumber }}</td>
       </ng-container>
+      <ng-container matColumnDef="userType">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let element">{{ element.userType | titlecase }}</td>
+      </ng-container>
       <!-- status Column -->
       <ng-container matColumnDef="city">
         <th mat-header-cell *matHeaderCellDef>City</th>
